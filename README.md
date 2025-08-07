@@ -9,4 +9,17 @@ Este projeto consiste no desenvolvimento de um sistema de matrículas para uma u
 - Pedro Augusto Santos Seabra	
 
 ## Professor
-- João Paulo Carneiro Aramuni	
+- João Paulo Carneiro Aramuni
+
+## Histórias de Usuário
+
+
+
+## Regras do Sistema
+- Cada disciplina precisa ter no mínimo 3 alunos.
+- Cada disciplina pode ter no máximo 60 alunos.
+- O aluno deve se matricular em 4 disciplinas obrigatórias e pode escolher até 2 optativas.
+- O sistema de cobrança é notificado ao final da matrícula.
+
+## Cronograma das Sprints
+
