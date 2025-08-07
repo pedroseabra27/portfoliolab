@@ -22,4 +22,6 @@ Este projeto consiste no desenvolvimento de um sistema de matrículas para uma u
 - O sistema de cobrança é notificado ao final da matrícula.
 
 ## Cronograma das Sprints
-
+- **Sprint 1:** Diagrama de casos de uso + histórias de usuário.
+- **Sprint 2:** Diagrama de classes + início do desenvolvimento em Java.
+- **Sprint 3:** Implementação completa do sistema + interface + persistência dos dados.
