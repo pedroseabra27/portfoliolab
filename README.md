@@ -14,5 +14,18 @@ e acessível.
 
 
 
+## Tecnologias utilizadas
+- Svelte, Sveltekit, Vercel, Figma, GitHub, Turso sqlite
+ 
+## Relação das dependências e bibliotecas/frameworks usados
+- Svelte, Tailwind, Lucide, Daisyui
+ 
+## Estrutura de diretórios do projeto;
+
+## Instruções de instalação e execução do sistema localmente;
+- Clonar repo, baixar dependencias, 
+
+## Link de acesso para o site publicado na nuvem
+
 
 
