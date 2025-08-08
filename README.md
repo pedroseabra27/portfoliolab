@@ -1,7 +1,8 @@
 # Portfólio
 
 ## Descrição
-Este projeto consiste no desenvolvimento de um sistema de matrículas para uma universidade, permitindo que alunos se matriculem em disciplinas, professores consultem turmas e a secretaria gerencie períodos e regras de matrícula.
+Este projeto consiste no desenvolvimento de um portólio profissional onde será mostrado minha trajetória, habilidades, projetos e formas de contato de maneira moderna
+e acessível.
 
 ## Integrantes
 - Breno de Oliveira Brandão 
@@ -11,10 +12,7 @@ Este projeto consiste no desenvolvimento de um sistema de matrículas para uma u
 ## Professor
 - João Paulo Carneiro Aramuni
 
-## Histórias de Usuário
 
 
 
-## Regras do Sistema
 
-## Cronograma das Sprints
