@@ -15,7 +15,7 @@ e acessível.
 
 
 ## Tecnologias utilizadas
-- Svelte, Sveltekit, Vercel, Figma, GitHub, Turso sqlite
+- Svelte, Vercel, Figma, GitHub
  
 ## Relação das dependências e bibliotecas/frameworks usados
 - Svelte, Tailwind, Lucide, Daisyui
@@ -30,8 +30,7 @@ src/
     +layout.svelte   ← layout base (header/nav/main/footer)
     +page.svelte     ← página inicial com seções: home, sobre, projetos, experiências, contato
   lib/
-    assets/
-      favicon.svg
+    
 docs/
   images/
     wireframe.png    ← wireframe do portfólio
@@ -43,8 +42,6 @@ docs/
    - `npm install`
 3. Ambiente de desenvolvimento
    - `npm run dev`
-4. Build de produção
-   - `npm run build && npm run preview`
 
 ## Wireframes no Figma
 
