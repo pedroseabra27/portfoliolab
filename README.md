@@ -19,12 +19,42 @@ e acessível.
  
 ## Relação das dependências e bibliotecas/frameworks usados
 - Svelte, Tailwind, Lucide, Daisyui
- 
-## Estrutura de diretórios do projeto;
-
-## Instruções de instalação e execução do sistema localmente;
-- Clonar repo, baixar dependencias, 
-
-## Link de acesso para o site publicado na nuvem
 
 
+## Estrutura de diretórios do projeto
+```
+src/
+  app.html
+  app.css
+  routes/
+    +layout.svelte   ← layout base (header/nav/main/footer)
+    +page.svelte     ← página inicial com seções: home, sobre, projetos, experiências, contato
+  lib/
+    assets/
+      favicon.svg
+docs/
+  images/
+    wireframe.png    ← wireframe do portfólio
+```
+
+## Instruções de instalação e execução local
+1. Clonar o repositório
+2. Instalar dependências
+   - `npm install`
+3. Ambiente de desenvolvimento
+   - `npm run dev`
+4. Build de produção
+   - `npm run build && npm run preview`
+
+## Wireframes no Figma
+
+### Layout Principal
+![Wireframe do Portfólio](docs/images/wireframe.png)
+
+**Descrição:** Layout dark theme com hero section, navegação fixa e seções organizadas (Sobre mim, Projetos, Experiências, Contato).
+
+## Publicação
+- 
+
+## Link do site 
+- 
