@@ -44,16 +44,16 @@ docs/
    - `npm run dev`
 
 ## Wireframes no Figma
-
-### Layout Principal
+Fizemos apenas uma página com todas seções
+### Seção Principal
 ![Wireframe do Portfólio](docs/images/wireframe.png)
-### Página contato
+### Seção contato
 ![Wireframe do Portfólio](docs/images/Contact.png)
-### Página Sobre mim
+### Seção Sobre mim
 ![Wireframe do Portfólio](docs/images/SobreMim.png)
-### Página Projetos
+### Seção Projetos
 ![Wireframe do Portfólio](docs/images/Projetos.png)
-### Página Experiências
+### Seção Experiências
 ![Wireframe do Portfólio](docs/images/Experiências.png)
 
 
