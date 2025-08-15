@@ -135,7 +135,7 @@
 		<div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
 			<div class="flex flex-col gap-4 lg:mt-7">
 				<div class="flex items-center gap-4 p-4 bg-[#181818] rounded-md">
-					<div class="w-3 h-3 bg-lime-500 rounded-sm"></div>
+					<div class="w-3 h-3 bg-green-500 rounded-sm animate-pulse"></div>
 					<span class="font-medium text-gray-200">Open to work & Collabs</span>
 				</div>
 
