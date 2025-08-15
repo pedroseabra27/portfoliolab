@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import Mouse from '$lib/components/Mouse.svelte';
 	
 	let { children } = $props();
 
@@ -30,11 +31,11 @@
 			</a>
 			
 			<nav class="hidden md:flex gap-8 text-sm items-center">
-				<a href="/" class="text-gray-300 hover:text-lime-500 transition-colors">Home</a>
-				<a href="/#sobre" class="text-gray-300 hover:text-lime-500 transition-colors">Sobre mim</a>
-				<a href="/#projetos" class="text-gray-300 hover:text-lime-500 transition-colors">Projetos</a>
-				<a href="/#experiencias" class="text-gray-300 hover:text-lime-500 transition-colors">Experiências</a>
-				<a href="/#contato" class="text-gray-300 hover:text-lime-500 transition-colors">Contato</a>
+				<a href="/" class="text-base-content hover:text-primary transition-colors">Home</a>
+				<a href="/#sobre" class="text-base-content hover:text-primary transition-colors">Sobre mim</a>
+				<a href="/#projetos" class="text-base-content hover:text-primary transition-colors">Projetos</a>
+				<a href="/#experiencias" class="text-base-content hover:text-primary transition-colors">Experiências</a>
+				<a href="/#contato" class="text-base-content hover:text-primary transition-colors">Contato</a>
 			</nav>
 
 			<button
@@ -59,15 +60,16 @@
 {#if isMobileMenuOpen}
 	<div class="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center">
 		<nav class="flex flex-col gap-8 text-center">
-			<a onclick={toggleMobileMenu} href="/" class="text-2xl text-gray-300 hover:text-lime-500 transition-colors">Home</a>
-			<a onclick={toggleMobileMenu} href="/#sobre" class="text-2xl text-gray-300 hover:text-lime-500 transition-colors">Sobre mim</a>
-			<a onclick={toggleMobileMenu} href="/#projetos" class="text-2xl text-gray-300 hover:text-lime-500 transition-colors">Projetos</a>
-			<a onclick={toggleMobileMenu} href="/#experiencias" class="text-2xl text-gray-300 hover:text-lime-500 transition-colors">Experiências</a>
-			<a onclick={toggleMobileMenu} href="/#contato" class="text-2xl text-gray-300 hover:text-lime-500 transition-colors">Contato</a>
+			<a onclick={toggleMobileMenu} href="/" class="text-2xl text-base-content hover:text-primary transition-colors">Home</a>
+			<a onclick={toggleMobileMenu} href="/#sobre" class="text-2xl text-base-content hover:text-primary transition-colors">Sobre mim</a>
+			<a onclick={toggleMobileMenu} href="/#projetos" class="text-2xl text-base-content hover:text-primary transition-colors">Projetos</a>
+			<a onclick={toggleMobileMenu} href="/#experiencias" class="text-2xl text-base-content hover:text-primary transition-colors">Experiências</a>
+			<a onclick={toggleMobileMenu} href="/#contato" class="text-2xl text-base-content hover:text-primary transition-colors">Contato</a>
 		</nav>
 	</div>
 {/if}
 
 <main>
+	<Mouse/>
 	{@render children?.()}
 </main>
