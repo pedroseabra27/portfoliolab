@@ -48,7 +48,7 @@ docs/
 ### Layout Principal
 ![Wireframe do Portfólio](docs/images/wireframe.png)
 ### Página contato
-![Wireframe do Portfólio](docs/images/contact.png)
+![Wireframe do Portfólio](docs/images/Contact.png)
 
 
 
