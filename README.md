@@ -51,6 +51,8 @@ docs/
 ![Wireframe do Portfólio](docs/images/Contact.png)
 ### Página Sobre mim
 ![Wireframe do Portfólio](docs/images/SobreMim.png)
+### Página Projetos
+![Wireframe do Portfólio](docs/images/Projetos.png)
 
 
 
