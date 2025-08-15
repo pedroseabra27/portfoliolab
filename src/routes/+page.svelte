@@ -5,7 +5,6 @@
 
 	let scrollY = $state(0);
 	let innerHeight = $state(0);
-	let innerWidth = $state(0);
 
 	function updateIntersections() {
 		if (document.documentElement.scrollHeight > innerHeight) {
