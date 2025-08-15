@@ -10,6 +10,14 @@
 	function toggleMobileMenu() {
 		isMobileMenuOpen = !isMobileMenuOpen;
 	}
+
+	const navItems = [
+		{ title: 'Home', href: '/' },
+		{ title: 'Sobre mim', href: '#sobre' },
+		{ title: 'Projetos', href: '#projetos' },
+		{ title: 'Experiências', href: '#experiencias' },
+		{ title: 'Contato', href: '#contato' }
+	];
 </script>
 
 <svelte:head>
@@ -29,19 +37,11 @@
 			<a href="/" class="text-xl font-bold text-white"> SeuNome </a>
 
 			<nav class="hidden items-center gap-8 text-sm md:flex">
-				<a href="/" class="text-base-content transition-colors hover:text-primary">Home</a>
-				<a href="/#sobre" class="text-base-content transition-colors hover:text-primary"
-					>Sobre mim</a
-				>
-				<a href="/#projetos" class="text-base-content transition-colors hover:text-primary"
-					>Projetos</a
-				>
-				<a href="/#experiencias" class="text-base-content transition-colors hover:text-primary"
-					>Experiências</a
-				>
-				<a href="/#contato" class="text-base-content transition-colors hover:text-primary"
-					>Contato</a
-				>
+				{#each navItems as item}
+					<a href={item.href} class="text-base-content transition-colors hover:text-primary"
+						>{item.title}</a
+					>
+				{/each}
 			</nav>
 
 			<button
@@ -88,11 +88,13 @@
 {#if isMobileMenuOpen}
 	<div class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-black">
 		<nav class="flex flex-col gap-8 text-center">
+			{#each navItems as item}  
 			<a
 				onclick={toggleMobileMenu}
 				href="/"
-				class="text-2xl text-base-content transition-colors hover:text-primary">Home</a
+				class="text-2xl text-base-content transition-colors hover:text-primary">{item.title}</a
 			>
+			{/each}
 			<a
 				onclick={toggleMobileMenu}
 				href="/#sobre"
@@ -218,52 +220,10 @@
 			</div>
 
 			<div
-				class="flex flex-col items-center justify-between space-y-4 border-t border-base-100 pt-8 text-sm md:flex-row md:space-y-0"
+				class="text-center justify-between space-y-4 border-t border-base-100 pt-8 text-sm md:flex-row md:space-y-0"
 			>
 				<p>&copy; {new Date().getFullYear()} Meu Nome Aqui. Todos os direitos reservados.</p>
 
-				<div class="flex items-center gap-2">
-					<p>Feito com</p>
-					<a
-						href="https://svelte.dev/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="flex items-center gap-2 transition-colors hover:text-primary"
-					>
-						<svg
-							width="20"
-							height="20"
-							viewBox="0 0 53 60"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-							class="text-[#FF3E00]"
-							><path
-								d="M51.32,15.08,30.41,2.46a5.3,5.3,0,0,0-5.32,0L4.19,15.08a5.3,5.3,0,0,0-2.66,4.6V39.52a5.3,5.3,0,0,0,2.66,4.6L25.09,57.54a5.3,5.3,0,0,0,5.32,0L51.32,44.12a5.3,5.3,0,0,0,2.68-4.6V19.68A5.3,5.3,0,0,0,51.32,15.08ZM28.27,5.09,47.8,16.82,29.83,27.42,10.29,15.71ZM5.56,18.3,24.1,29.33,23,29.93,5.74,20.15ZM2.88,39.12V21.28L21.3,31.85v18L2.88,39.12ZM27.75,54.91,9.32,44.29V26.51L27.75,37Zm.58-19.3L48.17,24.29v17L29.74,51.46V33.68ZM50.1,19.2,31.7,29.5,31,29.11,49.11,18.4Z"
-								fill="currentColor"
-							/></svg
-						>
-						Svelte
-					</a>
-					<a
-						href="https://tailwindcss.com/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="flex items-center gap-2 transition-colors hover:text-primary"
-					>
-						<svg
-							width="24"
-							height="24"
-							viewBox="0 0 256 154"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-							><path
-								d="M128 0C93.867 0 72.533 17.067 64 51.2 76.8 34.133 91.733 27.733 108.8 32c17.067 4.267 27.733 17.067 42.667 36.267C162.667 85.333 174.933 96 192 96c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-17.067-4.267-27.733-17.067-42.667-36.267C157.333 10.667 145.067 0 128 0zM64 64C29.867 64 8.533 81.067 0 115.2c12.8-17.067 27.733-23.467 44.8-19.2 17.067 4.266 27.733 17.066 42.667 36.266C98.667 149.333 110.933 160 128 160c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-17.067-4.267-27.733-17.067-42.667-36.267C93.333 74.667 81.067 64 64 64z"
-								fill="#38BDF8"
-							/></svg
-						>
-						Tailwind CSS
-					</a>
-				</div>
 			</div>
 		</div>
 	</footer>
