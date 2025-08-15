@@ -32,8 +32,8 @@ src/
   lib/
     
 docs/
-  images/
-    wireframe.png    ← wireframe do portfólio
+  images/ ← wireframes do portfólio
+
 ```
 
 ## Instruções de instalação e execução local
@@ -53,6 +53,8 @@ docs/
 ![Wireframe do Portfólio](docs/images/SobreMim.png)
 ### Página Projetos
 ![Wireframe do Portfólio](docs/images/Projetos.png)
+### Página Experiências
+![Wireframe do Portfólio](docs/images/Experiências.png)
 
 
 
