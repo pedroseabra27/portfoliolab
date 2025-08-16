@@ -39,6 +39,43 @@
 	$effect(() => {
 		updateIntersections();
 	});
+
+	const habilidades = ['JavaScript', 'React', 'Node.js', 'TypeScript', 'Svelte', 'Tailwind'];
+
+	const projetos = [
+		{
+			titulo: 'Projeto 1',
+			descricao: 'Descrição do projeto, tecnologias utilizadas e objetivos alcançados.',
+			tecnologias: ['React', 'Node.js']
+		},
+		{
+			titulo: 'Projeto 2',
+			descricao: 'Descrição do projeto, tecnologias utilizadas e objetivos alcançados.',
+			tecnologias: ['Svelte', 'TypeScript']
+		},
+		{
+			titulo: 'Projeto 3',
+			descricao: 'Descrição do projeto, tecnologias utilizadas e objetivos alcançados.',
+			tecnologias: ['Vue.js', 'Firebase']
+		}
+	];
+
+	const experiencias = [
+		{
+			cargo: 'Desenvolvedor Front-end',
+			empresa: 'Empresa XYZ',
+			periodo: '2022 - Presente',
+			descricao:
+				'Desenvolvimento de aplicações web responsivas, otimização de performance e trabalho em equipe com metodologias ágeis.'
+		},
+		{
+			cargo: 'Desenvolvedor Full-stack',
+			empresa: 'Startup ABC',
+			periodo: '2020 - 2022',
+			descricao:
+				'Desenvolvimento completo de aplicações web, desde o front-end até o back-end, incluindo banco de dados e APIs.'
+		}
+	];
 </script>
 
 {#if scrollProgress > 0.01}
@@ -75,32 +112,83 @@
 	</div>
 </section>
 
-<section id="sobre" class="bg-base-300 py-20">
-	<div class="mx-auto max-w-6xl px-4">
+<section class="flex items-center bg-base-300 py-16">
+	<div class="mx-auto w-full max-w-6xl px-4">
 		<Animate>
-			<div class="space-y-8">
-				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">Sobre mim</h2>
+			<div class="relative z-10 mx-auto max-w-7xl">
+				<div class="mb-16 text-center">
+					<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">Sobre mim</h2>
+				</div>
+
 				<div class="grid gap-12 lg:grid-cols-2">
-					<div class="space-y-6">
-						<p class="text-lg leading-relaxed text-base-content"></p>
-						<p class="text-lg leading-relaxed text-base-content"></p>
+					<div class="h-full space-y-6">
+						<div
+							class="h-full rounded-2xl bg-base-100 p-8 shadow-xl transition-all duration-300 hover:shadow-2xl"
+						>
+							<div class="mb-6 flex items-center">
+								<div
+									class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-primary to-secondary"
+								>
+									<svg
+										class="h-6 w-6 text-base-content"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+										></path>
+									</svg>
+								</div>
+								<h3 class="ml-4 text-2xl font-bold text-base-content">Quem sou eu</h3>
+							</div>
+							<p class="mb-4 text-lg leading-relaxed text-base-content">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis non quisquam quas
+								ab? Laboriosam!
+							</p>
+						</div>
 					</div>
-					<div class="space-y-6">
-						<h3 class="text-xl font-semibold text-base-content">Habilidades</h3>
-						<div class="flex flex-wrap gap-3">
-							<span class="rounded-lg bg-base-100 px-4 py-2 text-sm text-base-content"
-								>JavaScript</span
-							>
-							<span class="rounded-lg bg-base-100 px-4 py-2 text-sm text-base-content">React</span>
-							<span class="rounded-lg bg-base-100 px-4 py-2 text-sm text-base-content">Node.js</span
-							>
-							<span class="rounded-lg bg-base-100 px-4 py-2 text-sm text-base-content"
-								>TypeScript</span
-							>
-							<span class="rounded-lg bg-base-100 px-4 py-2 text-sm text-base-content">Svelte</span>
-							<span class="rounded-lg bg-base-100 px-4 py-2 text-sm text-base-content"
-								>Tailwind</span
-							>
+
+					<div class="h-full space-y-6">
+						<div
+							class="h-full rounded-2xl bg-base-100 p-8 shadow-xl transition-all duration-300 hover:shadow-2xl"
+						>
+							<div class="mb-6 flex items-center">
+								<div
+									class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-primary to-secondary"
+								>
+									<svg
+										class="h-6 w-6 text-base-content"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+										></path>
+									</svg>
+								</div>
+								<h3 class="ml-4 text-2xl font-bold text-base-content">Habilidades</h3>
+							</div>
+							<div class="flex flex-wrap gap-3">
+								{#each habilidades as habilidade, index}
+									<span
+										class="group animate-fade-in relative cursor-pointer rounded-full border bg-gradient-to-r from-orange-50 to-yellow-50 px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-300 hover:border-primary hover:shadow-md"
+										style="animation-delay: {0.1 * index}s"
+									>
+										{habilidade}
+										<div
+											class="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary opacity-0 transition-opacity duration-300 group-hover:opacity-10"
+										></div>
+									</span>
+								{/each}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -108,46 +196,24 @@
 		</Animate>
 	</div>
 </section>
-
 <section id="projetos" class="bg-base-300 py-20">
 	<div class="mx-auto max-w-6xl px-4">
 		<Animate>
 			<div class="space-y-12">
 				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">Projetos</h2>
 				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-					<div class="space-y-4 rounded-lg bg-base-200 p-6">
-						<div class="h-48 rounded-lg bg-base-100"></div>
-						<h3 class="text-xl font-semibold text-base-content">Projeto 1</h3>
-						<p class="text-base-content">
-							Descrição do projeto, tecnologias utilizadas e objetivos alcançados.
-						</p>
-						<div class="flex gap-2">
-							<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">React</span>
-							<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">Node.js</span>
+					{#each projetos as projeto}
+						<div class="space-y-4 rounded-lg bg-base-200 p-6">
+							<div class="h-48 rounded-lg bg-base-100"></div>
+							<h3 class="text-xl font-semibold text-base-content">{projeto.titulo}</h3>
+							<p class="text-base-content">{projeto.descricao}</p>
+							<div class="flex gap-2">
+								{#each projeto.tecnologias as tech}
+									<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">{tech}</span>
+								{/each}
+							</div>
 						</div>
-					</div>
-					<div class="space-y-4 rounded-lg bg-base-200 p-6">
-						<div class="h-48 rounded-lg bg-base-100"></div>
-						<h3 class="text-xl font-semibold text-base-content">Projeto 2</h3>
-						<p class="text-base-content">
-							Descrição do projeto, tecnologias utilizadas e objetivos alcançados.
-						</p>
-						<div class="flex gap-2">
-							<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">Svelte</span>
-							<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">TypeScript</span>
-						</div>
-					</div>
-					<div class="space-y-4 rounded-lg bg-base-200 p-6">
-						<div class="h-48 rounded-lg bg-base-100"></div>
-						<h3 class="text-xl font-semibold text-base-content">Projeto 3</h3>
-						<p class="text-base-content">
-							Descrição do projeto, tecnologias utilizadas e objetivos alcançados.
-						</p>
-						<div class="flex gap-2">
-							<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">Vue.js</span>
-							<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">Firebase</span>
-						</div>
-					</div>
+					{/each}
 				</div>
 			</div>
 		</Animate>
@@ -160,32 +226,18 @@
 			<div class="space-y-12">
 				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">Experiências</h2>
 				<div class="space-y-8">
-					<div class="space-y-4 border-l-4 border-primary pl-8">
-						<div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
-							<div>
-								<h3 class="text-xl font-semibold text-base-content">Desenvolvedor Front-end</h3>
-								<p class="font-medium text-primary">Empresa XYZ</p>
+					{#each experiencias as exp}
+						<div class="space-y-4 border-l-4 border-primary pl-8">
+							<div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+								<div>
+									<h3 class="text-xl font-semibold text-base-content">{exp.cargo}</h3>
+									<p class="font-medium text-primary">{exp.empresa}</p>
+								</div>
+								<span class="flex-shrink-0 text-sm text-base-content">{exp.periodo}</span>
 							</div>
-							<span class="flex-shrink-0 text-sm text-base-content">2022 - Presente</span>
+							<p class="text-base-content">{exp.descricao}</p>
 						</div>
-						<p class="text-base-content">
-							Desenvolvimento de aplicações web responsivas, otimização de performance e trabalho em
-							equipe com metodologias ágeis.
-						</p>
-					</div>
-					<div class="space-y-4 border-l-4 border-primary pl-8">
-						<div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
-							<div>
-								<h3 class="text-xl font-semibold text-base-content">Desenvolvedor Full-stack</h3>
-								<p class="font-medium text-primary">Startup ABC</p>
-							</div>
-							<span class="flex-shrink-0 text-sm text-base-content">2020 - 2022</span>
-						</div>
-						<p class="text-base-content">
-							Desenvolvimento completo de aplicações web, desde o front-end até o back-end,
-							incluindo banco de dados e APIs.
-						</p>
-					</div>
+					{/each}
 				</div>
 			</div>
 		</Animate>
@@ -351,4 +403,3 @@
 		</Animate>
 	</div>
 </section>
-
