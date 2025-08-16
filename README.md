@@ -1,5 +1,8 @@
 # Portfólio
 
+## Link do site 
+- https://portfoliolab-production.up.railway.app/
+
 ## Descrição
 Este projeto consiste no desenvolvimento de um portólio profissional onde será mostrado minha trajetória, habilidades, projetos e formas de contato de maneira moderna
 e acessível.
@@ -62,6 +65,3 @@ Fizemos apenas uma página com todas seções
 
 
 **Descrição:** Layout dark theme com hero section, navegação fixa e seções organizadas (Sobre mim, Projetos, Experiências, Contato).
-
-## Link do site 
-- https://portfoliolab-production.up.railway.app/
