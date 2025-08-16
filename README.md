@@ -63,8 +63,5 @@ Fizemos apenas uma página com todas seções
 
 **Descrição:** Layout dark theme com hero section, navegação fixa e seções organizadas (Sobre mim, Projetos, Experiências, Contato).
 
-## Publicação
-- 
-
 ## Link do site 
-- 
+- https://portfoliolab-production.up.railway.app/
