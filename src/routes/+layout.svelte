@@ -2,7 +2,7 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import Mouse from '$lib/components/Mouse.svelte';
-    import { getLocale, switchLocale, translate as t } from '$lib/i18n';
+	import { getLocale, switchLocale, translate as t } from '$lib/i18n';
 
 	let { children } = $props();
 
@@ -28,6 +28,8 @@
 	];
 
 	if (typeof window !== 'undefined') {
+		// Ensure <html lang> reflects saved/initial locale
+		document.documentElement.lang = currentLocale;
 		window.addEventListener('localechange', (e: any) => {
 			currentLocale = e.detail;
 		});
@@ -48,7 +50,7 @@
 <header class="sticky top-0 z-50 border-b border-gray-800 bg-black/80 backdrop-blur">
 	<div class="mx-auto max-w-6xl px-4">
 		<div class="flex h-16 items-center justify-between">
-			<a href="/" class="text-xl font-bold text-white"> SeuNome </a>
+			<a href="/" class="text-xl font-bold text-white"> {t('brand.name', currentLocale)} </a>
 
 			<nav class="hidden items-center gap-8 text-sm md:flex">
 				{#each navItems as item}
@@ -135,8 +137,8 @@
 				<div class="space-y-4">
 					<h3 class="text-lg font-bold text-base-content">{t('footer.quote', currentLocale)}</h3>
 					<blockquote class="italic">
-						<p>"A melhor forma de prever o futuro é inventá-lo."</p>
-						<cite class="mt-2 block text-sm not-italic">- Alan Kay</cite>
+						<p>"{t('footer.quote_text', currentLocale)}"</p>
+						<cite class="mt-2 block text-sm not-italic">{t('footer.quote_author', currentLocale)}</cite>
 					</blockquote>
 				</div>
 
@@ -229,7 +231,7 @@
 			<div
 				class="text-center justify-between space-y-4 border-t border-base-100 pt-8 text-sm md:flex-row md:space-y-0"
 			>
-				<p>&copy; {new Date().getFullYear()} Meu Nome Aqui. {t('footer.rights', currentLocale)}</p>
+				<p>&copy; {new Date().getFullYear()} {t('brand.name', currentLocale)}. {t('footer.rights', currentLocale)}</p>
 
 			</div>
 		</div>

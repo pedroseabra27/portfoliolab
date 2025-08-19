@@ -2,18 +2,18 @@
 	import Animate from '$lib/components/Animate.svelte';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-		import { getLocale, translate as t } from '$lib/i18n';
+	import { getLocale, translate as t } from '$lib/i18n';
 
 	let scrollY = $state(0);
 	let innerHeight = $state(0);
 		let currentLocale = $state(getLocale());
 
-		if (typeof window !== 'undefined') {
-			window.addEventListener('localechange', (e) => {
-				// @ts-ignore
-				currentLocale = e.detail;
-			});
-		}
+	if (typeof window !== 'undefined') {
+		window.addEventListener('localechange', (e) => {
+			// @ts-ignore
+			currentLocale = e.detail;
+		});
+	}
 
 	function updateIntersections() {
 		if (document.documentElement.scrollHeight > innerHeight) {
@@ -53,36 +53,34 @@
 
 	const projetos = [
 		{
-			titulo: 'Projeto 1',
-			descricao: 'Descrição do projeto, tecnologias utilizadas e objetivos alcançados.',
+			tituloKey: 'projects.1.title',
+			descKey: 'projects.1.desc',
 			tecnologias: ['React', 'Node.js']
 		},
 		{
-			titulo: 'Projeto 2',
-			descricao: 'Descrição do projeto, tecnologias utilizadas e objetivos alcançados.',
+			tituloKey: 'projects.2.title',
+			descKey: 'projects.2.desc',
 			tecnologias: ['Svelte', 'TypeScript']
 		},
 		{
-			titulo: 'Projeto 3',
-			descricao: 'Descrição do projeto, tecnologias utilizadas e objetivos alcançados.',
+			tituloKey: 'projects.3.title',
+			descKey: 'projects.3.desc',
 			tecnologias: ['Vue.js', 'Firebase']
 		}
 	];
 
 	const experiencias = [
 		{
-			cargo: 'Desenvolvedor Front-end',
-			empresa: 'Empresa XYZ',
-			periodo: '2022 - Presente',
-			descricao:
-				'Desenvolvimento de aplicações web responsivas, otimização de performance e trabalho em equipe com metodologias ágeis.'
+			cargoKey: 'experiences.1.role',
+			empresaKey: 'experiences.1.company',
+			periodoKey: 'experiences.1.period',
+			descKey: 'experiences.1.desc'
 		},
 		{
-			cargo: 'Desenvolvedor Full-stack',
-			empresa: 'Startup ABC',
-			periodo: '2020 - 2022',
-			descricao:
-				'Desenvolvimento completo de aplicações web, desde o front-end até o back-end, incluindo banco de dados e APIs.'
+			cargoKey: 'experiences.2.role',
+			empresaKey: 'experiences.2.company',
+			periodoKey: 'experiences.2.period',
+			descKey: 'experiences.2.desc'
 		}
 	];
 </script>
@@ -98,13 +96,12 @@
 		<Animate>
 			<div class="grid items-center gap-12 lg:grid-cols-2">
 				<div class="space-y-8 text-center lg:text-left">
-					<h1 class="text-5xl leading-tight font-bold text-base-content lg:text-7xl">
-						Seu Nome Aqui
-					</h1>
-					<p class="mx-auto max-w-2xl text-xl leading-relaxed text-base-content lg:mx-0">
-						Texto introdutório: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua.
-					</p>
+									<h1 class="text-5xl leading-tight font-bold text-base-content lg:text-7xl">
+										{t('brand.name', currentLocale)}
+									</h1>
+									<p class="mx-auto max-w-2xl text-xl leading-relaxed text-base-content lg:mx-0">
+										{t('hero.intro', currentLocale)}
+									</p>
 				</div>
 
 				<div class="flex justify-center lg:justify-end">
@@ -154,10 +151,9 @@
 								</div>
 								<h3 class="ml-4 text-2xl font-bold text-base-content">{t('about.who', currentLocale)}</h3>
 							</div>
-							<p class="mb-4 text-lg leading-relaxed text-base-content">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis non quisquam quas
-								ab? Laboriosam!
-							</p>
+												<p class="mb-4 text-lg leading-relaxed text-base-content">
+													{t('about.who_text', currentLocale)}
+												</p>
 						</div>
 					</div>
 
@@ -214,8 +210,8 @@
 					{#each projetos as projeto}
 						<div class="space-y-4 rounded-lg bg-base-200 p-6">
 							<div class="h-48 rounded-lg bg-base-100"></div>
-							<h3 class="text-xl font-semibold text-base-content">{projeto.titulo}</h3>
-							<p class="text-base-content">{projeto.descricao}</p>
+													<h3 class="text-xl font-semibold text-base-content">{t(projeto.tituloKey, currentLocale)}</h3>
+													<p class="text-base-content">{t(projeto.descKey, currentLocale)}</p>
 							<div class="flex gap-2">
 								{#each projeto.tecnologias as tech}
 									<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">{tech}</span>
@@ -239,12 +235,12 @@
 						<div class="space-y-4 border-l-4 border-primary pl-8">
 							<div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
 								<div>
-									<h3 class="text-xl font-semibold text-base-content">{exp.cargo}</h3>
-									<p class="font-medium text-primary">{exp.empresa}</p>
+																<h3 class="text-xl font-semibold text-base-content">{t(exp.cargoKey, currentLocale)}</h3>
+																<p class="font-medium text-primary">{t(exp.empresaKey, currentLocale)}</p>
 								</div>
-								<span class="flex-shrink-0 text-sm text-base-content">{exp.periodo}</span>
+															<span class="flex-shrink-0 text-sm text-base-content">{t(exp.periodoKey, currentLocale)}</span>
 							</div>
-							<p class="text-base-content">{exp.descricao}</p>
+													<p class="text-base-content">{t(exp.descKey, currentLocale)}</p>
 						</div>
 					{/each}
 				</div>
@@ -304,7 +300,7 @@
 						</div>
 						<div>
 							<p class="text-xs font-semibold tracking-wider text-base-content">{t('contact.location_label', currentLocale)}</p>
-							<p class="text-base-content">Minha localização</p>
+													<p class="text-base-content">{t('contact.location_value', currentLocale)}</p>
 						</div>
 					</div>
 
