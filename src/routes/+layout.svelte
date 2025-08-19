@@ -2,22 +2,36 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import Mouse from '$lib/components/Mouse.svelte';
+    import { getLocale, switchLocale, translate as t } from '$lib/i18n';
 
 	let { children } = $props();
 
 	let isMobileMenuOpen = $state(false);
+	let currentLocale = $state(getLocale());
 
 	function toggleMobileMenu() {
 		isMobileMenuOpen = !isMobileMenuOpen;
 	}
 
+	function toggleLocale() {
+		const next = currentLocale === 'pt' ? 'en' : 'pt';
+		currentLocale = next;
+		switchLocale(next);
+	}
+
 	const navItems = [
-		{ title: 'Home', href: '/' },
-		{ title: 'Sobre mim', href: '#sobre' },
-		{ title: 'Projetos', href: '#projetos' },
-		{ title: 'Experiências', href: '#experiencias' },
-		{ title: 'Contato', href: '#contato' }
+		{ key: 'nav.home', href: '/' },
+		{ key: 'nav.about', href: '#sobre' },
+		{ key: 'nav.projects', href: '#projetos' },
+		{ key: 'nav.experiences', href: '#experiencias' },
+		{ key: 'nav.contact', href: '#contato' }
 	];
+
+	if (typeof window !== 'undefined') {
+		window.addEventListener('localechange', (e: any) => {
+			currentLocale = e.detail;
+		});
+	}
 </script>
 
 <svelte:head>
@@ -39,15 +53,22 @@
 			<nav class="hidden items-center gap-8 text-sm md:flex">
 				{#each navItems as item}
 					<a href={item.href} class="text-base-content transition-colors hover:text-primary"
-						>{item.title}</a
+						>{t(item.key, currentLocale)}</a
 					>
 				{/each}
+				<button
+					onclick={toggleLocale}
+					class="rounded-md border border-base-100 px-3 py-1 text-xs text-base-content hover:bg-base-200"
+					aria-label={currentLocale === 'pt' ? t('aria.switch_to_en', currentLocale) : t('aria.switch_to_pt', currentLocale)}
+				>
+					{currentLocale.toUpperCase()}
+				</button>
 			</nav>
 
 			<button
 				onclick={toggleMobileMenu}
 				class="text-white focus:outline-none md:hidden"
-				aria-label="Abrir menu"
+				aria-label={t('aria.open_menu', currentLocale)}
 			>
 				{#if isMobileMenuOpen}
 					<svg
@@ -88,33 +109,19 @@
 {#if isMobileMenuOpen}
 	<div class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-black">
 		<nav class="flex flex-col gap-8 text-center">
-			{#each navItems as item}  
-			<a
-				onclick={toggleMobileMenu}
-				href="/"
-				class="text-2xl text-base-content transition-colors hover:text-primary">{item.title}</a
-			>
+			{#each navItems as item}
+				<a
+					onclick={toggleMobileMenu}
+					href={item.href}
+					class="text-2xl text-base-content transition-colors hover:text-primary">{t(item.key, currentLocale)}</a>
 			{/each}
-			<a
-				onclick={toggleMobileMenu}
-				href="/#sobre"
-				class="text-2xl text-base-content transition-colors hover:text-primary">Sobre mim</a
+			<button
+				onclick={() => { toggleLocale(); toggleMobileMenu(); }}
+				class="mx-auto mt-6 rounded-md border border-base-100 px-4 py-2 text-base-content hover:bg-base-200"
+				aria-label={currentLocale === 'pt' ? t('aria.switch_to_en', currentLocale) : t('aria.switch_to_pt', currentLocale)}
 			>
-			<a
-				onclick={toggleMobileMenu}
-				href="/#projetos"
-				class="text-2xl text-base-content transition-colors hover:text-primary">Projetos</a
-			>
-			<a
-				onclick={toggleMobileMenu}
-				href="/#experiencias"
-				class="text-2xl text-base-content transition-colors hover:text-primary">Experiências</a
-			>
-			<a
-				onclick={toggleMobileMenu}
-				href="/#contato"
-				class="text-2xl text-base-content transition-colors hover:text-primary">Contato</a
-			>
+				{currentLocale.toUpperCase()}
+			</button>
 		</nav>
 	</div>
 {/if}
@@ -126,7 +133,7 @@
 		<div class="mx-auto max-w-6xl px-4">
 			<div class="mb-8 grid grid-cols-1 gap-8 text-center md:grid-cols-3 md:text-left">
 				<div class="space-y-4">
-					<h3 class="text-lg font-bold text-base-content">Citação</h3>
+					<h3 class="text-lg font-bold text-base-content">{t('footer.quote', currentLocale)}</h3>
 					<blockquote class="italic">
 						<p>"A melhor forma de prever o futuro é inventá-lo."</p>
 						<cite class="mt-2 block text-sm not-italic">- Alan Kay</cite>
@@ -134,19 +141,19 @@
 				</div>
 
 				<div class="space-y-4">
-					<h3 class="text-lg font-bold text-base-content">Navegação</h3>
+					<h3 class="text-lg font-bold text-base-content">{t('footer.navigation', currentLocale)}</h3>
 					<ul class="space-y-2">
-						<li><a href="#sobre" class="transition-colors hover:text-primary">Sobre</a></li>
-						<li><a href="#projetos" class="transition-colors hover:text-primary">Projetos</a></li>
+						<li><a href="#sobre" class="transition-colors hover:text-primary">{t('footer.about', currentLocale)}</a></li>
+						<li><a href="#projetos" class="transition-colors hover:text-primary">{t('footer.projects', currentLocale)}</a></li>
 						<li>
-							<a href="#experiencias" class="transition-colors hover:text-primary">Experiências</a>
+							<a href="#experiencias" class="transition-colors hover:text-primary">{t('footer.experiences', currentLocale)}</a>
 						</li>
-						<li><a href="#contato" class="transition-colors hover:text-primary">Contato</a></li>
+						<li><a href="#contato" class="transition-colors hover:text-primary">{t('footer.contact', currentLocale)}</a></li>
 					</ul>
 				</div>
 
 				<div class="space-y-4">
-					<h3 class="text-lg font-bold text-base-content">Conecte-se</h3>
+					<h3 class="text-lg font-bold text-base-content">{t('footer.connect', currentLocale)}</h3>
 					<div class="flex items-center justify-center gap-4 md:justify-start">
 						<a
 							href="https://github.com"
@@ -222,7 +229,7 @@
 			<div
 				class="text-center justify-between space-y-4 border-t border-base-100 pt-8 text-sm md:flex-row md:space-y-0"
 			>
-				<p>&copy; {new Date().getFullYear()} Meu Nome Aqui. Todos os direitos reservados.</p>
+				<p>&copy; {new Date().getFullYear()} Meu Nome Aqui. {t('footer.rights', currentLocale)}</p>
 
 			</div>
 		</div>

@@ -2,9 +2,18 @@
 	import Animate from '$lib/components/Animate.svelte';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
+		import { getLocale, translate as t } from '$lib/i18n';
 
 	let scrollY = $state(0);
 	let innerHeight = $state(0);
+		let currentLocale = $state(getLocale());
+
+		if (typeof window !== 'undefined') {
+			window.addEventListener('localechange', (e) => {
+				// @ts-ignore
+				currentLocale = e.detail;
+			});
+		}
 
 	function updateIntersections() {
 		if (document.documentElement.scrollHeight > innerHeight) {
@@ -103,7 +112,7 @@
 						class="flex h-80 w-80 items-center justify-center overflow-hidden rounded-full bg-base-100"
 					>
 						<div class="flex h-full w-full items-center justify-center text-lg opacity-50">
-							Foto do Perfil
+							{t('profile.photo', currentLocale)}
 						</div>
 					</div>
 				</div>
@@ -112,12 +121,12 @@
 	</div>
 </section>
 
-<section class="flex items-center bg-base-300 py-16">
+<section id="sobre" class="flex items-center bg-base-300 py-16">
 	<div class="mx-auto w-full max-w-6xl px-4">
 		<Animate>
 			<div class="relative z-10 mx-auto max-w-7xl">
 				<div class="mb-16 text-center">
-					<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">Sobre mim</h2>
+					<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">{t('about.title', currentLocale)}</h2>
 				</div>
 
 				<div class="grid gap-12 lg:grid-cols-2">
@@ -143,7 +152,7 @@
 										></path>
 									</svg>
 								</div>
-								<h3 class="ml-4 text-2xl font-bold text-base-content">Quem sou eu</h3>
+								<h3 class="ml-4 text-2xl font-bold text-base-content">{t('about.who', currentLocale)}</h3>
 							</div>
 							<p class="mb-4 text-lg leading-relaxed text-base-content">
 								Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis non quisquam quas
@@ -174,7 +183,7 @@
 										></path>
 									</svg>
 								</div>
-								<h3 class="ml-4 text-2xl font-bold text-base-content">Habilidades</h3>
+								<h3 class="ml-4 text-2xl font-bold text-base-content">{t('about.skills', currentLocale)}</h3>
 							</div>
 							<div class="flex flex-wrap gap-3">
 								{#each habilidades as habilidade, index}
@@ -200,7 +209,7 @@
 	<div class="mx-auto max-w-6xl px-4">
 		<Animate>
 			<div class="space-y-12">
-				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">Projetos</h2>
+				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">{t('projects.title', currentLocale)}</h2>
 				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{#each projetos as projeto}
 						<div class="space-y-4 rounded-lg bg-base-200 p-6">
@@ -224,7 +233,7 @@
 	<div class="mx-auto max-w-6xl px-4">
 		<Animate>
 			<div class="space-y-12">
-				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">Experiências</h2>
+				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">{t('experiences.title', currentLocale)}</h2>
 				<div class="space-y-8">
 					{#each experiencias as exp}
 						<div class="space-y-4 border-l-4 border-primary pl-8">
@@ -247,7 +256,7 @@
 <section id="contato" class="bg-base-300 py-20 text-base-content">
 	<div class="mx-auto max-w-6xl px-4">
 		<div class="mb-12 text-center">
-			<h2 class="text-4xl font-bold">Contact</h2>
+			<h2 class="text-4xl font-bold">{t('contact.title', currentLocale)}</h2>
 		</div>
 
 		<Animate>
@@ -255,7 +264,7 @@
 				<div class="flex flex-col gap-4 lg:mt-7">
 					<div class="flex items-center gap-4 rounded-md bg-base-200 p-4">
 						<div class="h-3 w-3 animate-pulse rounded-sm bg-primary"></div>
-						<span class="font-medium text-base-content">Open to work & Collabs</span>
+						<span class="font-medium text-base-content">{t('contact.open_to_work', currentLocale)}</span>
 					</div>
 
 					<div class="flex items-center gap-4 rounded-md bg-base-200 p-4">
@@ -275,7 +284,7 @@
 							</svg>
 						</div>
 						<div>
-							<p class="text-xs font-semibold tracking-wider text-base-content">EMAIL</p>
+							<p class="text-xs font-semibold tracking-wider text-base-content">{t('contact.email_label', currentLocale)}</p>
 							<p class="text-base-content">meuemail@gmail.com</p>
 						</div>
 					</div>
@@ -294,7 +303,7 @@
 							</svg>
 						</div>
 						<div>
-							<p class="text-xs font-semibold tracking-wider text-base-content">LOCATION</p>
+							<p class="text-xs font-semibold tracking-wider text-base-content">{t('contact.location_label', currentLocale)}</p>
 							<p class="text-base-content">Minha localização</p>
 						</div>
 					</div>
@@ -372,32 +381,32 @@
 
 				<form class="flex flex-col gap-4">
 					<div>
-						<label for="name" class="mb-2 block text-sm font-medium text-base-content">Name</label>
+						<label for="name" class="mb-2 block text-sm font-medium text-base-content">{t('form.name', currentLocale)}</label>
 						<input
 							type="text"
 							id="name"
 							class="input w-full"
-							placeholder="Please enter your name"
+							placeholder={t('form.placeholder.name', currentLocale)}
 						/>
 					</div>
 					<div>
-						<label for="email" class="mb-2 block text-sm font-medium text-base-content">Email</label
+						<label for="email" class="mb-2 block text-sm font-medium text-base-content">{t('form.email', currentLocale)}</label
 						>
 						<input
 							type="email"
 							id="email"
 							class="input w-full"
-							placeholder="Please enter your email"
+							placeholder={t('form.placeholder.email', currentLocale)}
 						/>
 					</div>
 					<div>
 						<label for="message" class="mb-2 block text-sm font-medium text-base-content"
-							>Message</label
+							>{t('form.message', currentLocale)}</label
 						>
-						<textarea id="message" rows="5" class="textarea w-full" placeholder="Enter your message"
+						<textarea id="message" rows="5" class="textarea w-full" placeholder={t('form.placeholder.message', currentLocale)}
 						></textarea>
 					</div>
-					<button type="submit" class="btn btn-primary"> Submit </button>
+					<button type="submit" class="btn btn-primary"> {t('form.submit', currentLocale)} </button>
 				</form>
 			</div>
 		</Animate>
