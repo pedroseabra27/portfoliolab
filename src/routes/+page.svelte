@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { getLocale, translate as t } from '$lib/i18n';
+	import { projetos } from '$lib/utils';
 
 	let scrollY = $state(0);
 	let innerHeight = $state(0);
@@ -50,24 +51,6 @@
 	});
 
 	const habilidades = ['JavaScript', 'React', 'Node.js', 'TypeScript', 'Svelte', 'Tailwind'];
-
-	const projetos = [
-		{
-			tituloKey: 'projects.1.title',
-			descKey: 'projects.1.desc',
-			tecnologias: ['React', 'Node.js']
-		},
-		{
-			tituloKey: 'projects.2.title',
-			descKey: 'projects.2.desc',
-			tecnologias: ['Svelte', 'TypeScript']
-		},
-		{
-			tituloKey: 'projects.3.title',
-			descKey: 'projects.3.desc',
-			tecnologias: ['Vue.js', 'Firebase']
-		}
-	];
 
 	const experiencias = [
 		{
@@ -208,7 +191,7 @@
 				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">{t('projects.title', currentLocale)}</h2>
 				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{#each projetos as projeto}
-						<div class="space-y-4 rounded-lg bg-base-200 p-6">
+						<a href="/projeto/{projeto.id}" class="space-y-4 rounded-lg bg-base-200 p-6">
 							<div class="h-48 rounded-lg bg-base-100"></div>
 													<h3 class="text-xl font-semibold text-base-content">{t(projeto.tituloKey, currentLocale)}</h3>
 													<p class="text-base-content">{t(projeto.descKey, currentLocale)}</p>
@@ -217,7 +200,7 @@
 									<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">{tech}</span>
 								{/each}
 							</div>
-						</div>
+						</a>
 					{/each}
 				</div>
 			</div>
