@@ -194,15 +194,16 @@
 							</div>
 							<div class="flex flex-wrap gap-3">
 								{#each habilidades as habilidade, index}
-									<span
+									<!-- <span
 										class="group animate-fade-in relative cursor-pointer rounded-full border bg-gradient-to-r from-orange-50 to-yellow-50 px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-300 hover:border-primary hover:shadow-md"
 										style="animation-delay: {0.1 * index}s"
 									>
 										{habilidade}
 										<div
 											class="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary opacity-0 transition-opacity duration-300 group-hover:opacity-10"
-										></div>
-									</span>
+										></div> -->
+										<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">{habilidade}</span>
+									<!-- </span> -->
 								{/each}
 							</div>
 						</div>

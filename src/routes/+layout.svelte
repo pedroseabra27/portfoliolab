@@ -50,7 +50,7 @@
 <header class="sticky top-0 z-50 border-b border-base-300 bg-base-300/60  backdrop-blur">
 	<div class="mx-auto max-w-6xl px-4">
 		<div class="flex h-16 items-center justify-between">
-			<a href="/" class="text-xl font-bold text-white"> {t('brand.name', currentLocale)} </a>
+			<a href="/" class="text-xl font-bold text-base-content"> {t('brand.name', currentLocale)} </a>
 
 			<nav class="hidden items-center gap-8 text-sm md:flex">
 				{#each navItems as item}
