@@ -27,6 +27,7 @@
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
 		"@tailwindcss/vite": "^4.1.7",
 		"@types/node": "^22",
+		"@types/nodemailer": "^7.0.1",
 		"daisyui": "^5.0.38",
 		"eslint": "^9.18.0",
 		"eslint-config-prettier": "^10.0.1",
@@ -44,6 +45,7 @@
 	},
 	"packageManager": "pnpm@10.3.0+sha512.ee592eda8815a8a293c206bb0917c4bb0ff274c50def7cbc17be05ec641fc2d1b02490ce660061356bd0d126a4d7eb2ec8830e6959fb8a447571c631d5a2442d",
 	"dependencies": {
-		"lucide-svelte": "^0.540.0"
+		"lucide-svelte": "^0.540.0",
+		"nodemailer": "^7.0.5"
 	}
 }

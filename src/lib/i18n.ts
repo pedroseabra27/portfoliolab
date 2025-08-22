@@ -115,7 +115,21 @@ export const dictionaries: Dictionaries = {
 			'Aplicação mobile-first construída com Vue.js e Firebase, oferecendo sincronização em tempo real e experiência offline. Integração completa com serviços de nuvem.',
 		'projects.3.feature1': 'Sincronização em tempo real',
 		'projects.3.feature2': 'Funcionalidade offline',
-		'projects.3.feature3': 'Integração com Firebase'
+		'projects.3.feature3': 'Integração com Firebase',
+
+		'contact.title': 'Contato',
+    'contact.open_to_work': 'Aberto para trabalho e colaborações',
+    'contact.email_label': 'EMAIL',
+    'contact.location_label': 'LOCALIZAÇÃO',
+    'contact.location_value': 'Minha localização',
+	 'form.name': 'Nome',
+    'form.email': 'Email',
+    'form.message': 'Mensagem',
+    'form.placeholder.name': 'Insira seu nome',
+    'form.placeholder.email': 'Insira seu email',
+    'form.placeholder.message': 'Digite sua mensagem',
+    'form.submit': 'Enviar',
+
 	},
 	en: {
 		// Brand / Hero
@@ -204,7 +218,22 @@ export const dictionaries: Dictionaries = {
 			'Mobile-first application built with Vue.js and Firebase, offering real-time synchronization and offline experience. Complete integration with cloud services.',
 		'projects.3.feature1': 'Real-time synchronization',
 		'projects.3.feature2': 'Offline functionality',
-		'projects.3.feature3': 'Firebase integration'
+		'projects.3.feature3': 'Firebase integration',
+		// Contact
+    'contact.title': 'Contact',
+    'contact.open_to_work': 'Open to work & Collabs',
+    'contact.email_label': 'EMAIL',
+    'contact.location_label': 'LOCATION',
+    'contact.location_value': 'My location',
+
+    // Form
+    'form.name': 'Name',
+    'form.email': 'Email',
+    'form.message': 'Message',
+    'form.placeholder.name': 'Please enter your name',
+    'form.placeholder.email': 'Please enter your email',
+    'form.placeholder.message': 'Enter your message',
+    'form.submit': 'Submit',
 	}
 };
 

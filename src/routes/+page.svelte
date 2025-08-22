@@ -1,13 +1,17 @@
-<script>
+<script lang="ts">
 	import Animate from '$lib/components/Animate.svelte';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { getLocale, translate as t } from '$lib/i18n';
 	import { projetos } from '$lib/utils';
+	import { enhance } from '$app/forms';
+	import type { ActionData } from './$types';
+	import type { SubmitFunction } from '@sveltejs/kit';
 
+	let { form }: { form: ActionData } = $props();
 	let scrollY = $state(0);
 	let innerHeight = $state(0);
-		let currentLocale = $state(getLocale());
+	let currentLocale = $state(getLocale());
 
 	if (typeof window !== 'undefined') {
 		window.addEventListener('localechange', (e) => {
@@ -66,6 +70,23 @@
 			descKey: 'experiences.2.desc'
 		}
 	];
+
+	let loading = $state(false);
+	let formElement: HTMLFormElement;
+
+	const handleSubmit: SubmitFunction = () => {
+		loading = true;
+
+		return async ({ result, update }) => {
+			
+			if (result.type === 'success') {
+				formElement?.reset();
+			}
+			
+			await update();
+			loading = false;
+		};
+	};
 </script>
 
 {#if scrollProgress > 0.01}
@@ -79,12 +100,12 @@
 		<Animate>
 			<div class="grid items-center gap-12 lg:grid-cols-2">
 				<div class="space-y-8 text-center lg:text-left">
-									<h1 class="text-5xl leading-tight font-bold text-base-content lg:text-7xl">
-										{t('brand.name', currentLocale)}
-									</h1>
-									<p class="mx-auto max-w-2xl text-xl leading-relaxed text-base-content lg:mx-0">
-										{t('hero.intro', currentLocale)}
-									</p>
+					<h1 class="text-5xl leading-tight font-bold text-base-content lg:text-7xl">
+						{t('brand.name', currentLocale)}
+					</h1>
+					<p class="mx-auto max-w-2xl text-xl leading-relaxed text-base-content lg:mx-0">
+						{t('hero.intro', currentLocale)}
+					</p>
 				</div>
 
 				<div class="flex justify-center lg:justify-end">
@@ -106,7 +127,9 @@
 		<Animate>
 			<div class="relative z-10 mx-auto max-w-7xl">
 				<div class="mb-16 text-center">
-					<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">{t('about.title', currentLocale)}</h2>
+					<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">
+						{t('about.title', currentLocale)}
+					</h2>
 				</div>
 
 				<div class="grid gap-12 lg:grid-cols-2">
@@ -132,11 +155,13 @@
 										></path>
 									</svg>
 								</div>
-								<h3 class="ml-4 text-2xl font-bold text-base-content">{t('about.who', currentLocale)}</h3>
+								<h3 class="ml-4 text-2xl font-bold text-base-content">
+									{t('about.who', currentLocale)}
+								</h3>
 							</div>
-												<p class="mb-4 text-lg leading-relaxed text-base-content">
-													{t('about.who_text', currentLocale)}
-												</p>
+							<p class="mb-4 text-lg leading-relaxed text-base-content">
+								{t('about.who_text', currentLocale)}
+							</p>
 						</div>
 					</div>
 
@@ -162,7 +187,9 @@
 										></path>
 									</svg>
 								</div>
-								<h3 class="ml-4 text-2xl font-bold text-base-content">{t('about.skills', currentLocale)}</h3>
+								<h3 class="ml-4 text-2xl font-bold text-base-content">
+									{t('about.skills', currentLocale)}
+								</h3>
 							</div>
 							<div class="flex flex-wrap gap-3">
 								{#each habilidades as habilidade, index}
@@ -188,13 +215,17 @@
 	<div class="mx-auto max-w-6xl px-4">
 		<Animate>
 			<div class="space-y-12">
-				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">{t('projects.title', currentLocale)}</h2>
+				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">
+					{t('projects.title', currentLocale)}
+				</h2>
 				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{#each projetos as projeto}
 						<a href="/projeto/{projeto.id}" class="space-y-4 rounded-lg bg-base-200 p-6">
 							<div class="h-48 rounded-lg bg-base-100"></div>
-													<h3 class="text-xl font-semibold text-base-content">{t(projeto.tituloKey, currentLocale)}</h3>
-													<p class="text-base-content">{t(projeto.descKey, currentLocale)}</p>
+							<h3 class="text-xl font-semibold text-base-content">
+								{t(projeto.tituloKey, currentLocale)}
+							</h3>
+							<p class="text-base-content">{t(projeto.descKey, currentLocale)}</p>
 							<div class="flex gap-2">
 								{#each projeto.tecnologias as tech}
 									<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">{tech}</span>
@@ -212,18 +243,24 @@
 	<div class="mx-auto max-w-6xl px-4">
 		<Animate>
 			<div class="space-y-12">
-				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">{t('experiences.title', currentLocale)}</h2>
+				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">
+					{t('experiences.title', currentLocale)}
+				</h2>
 				<div class="space-y-8">
 					{#each experiencias as exp}
 						<div class="space-y-4 border-l-4 border-primary pl-8">
 							<div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
 								<div>
-																<h3 class="text-xl font-semibold text-base-content">{t(exp.cargoKey, currentLocale)}</h3>
-																<p class="font-medium text-primary">{t(exp.empresaKey, currentLocale)}</p>
+									<h3 class="text-xl font-semibold text-base-content">
+										{t(exp.cargoKey, currentLocale)}
+									</h3>
+									<p class="font-medium text-primary">{t(exp.empresaKey, currentLocale)}</p>
 								</div>
-															<span class="flex-shrink-0 text-sm text-base-content">{t(exp.periodoKey, currentLocale)}</span>
+								<span class="flex-shrink-0 text-sm text-base-content"
+									>{t(exp.periodoKey, currentLocale)}</span
+								>
 							</div>
-													<p class="text-base-content">{t(exp.descKey, currentLocale)}</p>
+							<p class="text-base-content">{t(exp.descKey, currentLocale)}</p>
 						</div>
 					{/each}
 				</div>
@@ -243,7 +280,9 @@
 				<div class="flex flex-col gap-4 lg:mt-7">
 					<div class="flex items-center gap-4 rounded-md bg-base-200 p-4">
 						<div class="h-3 w-3 animate-pulse rounded-sm bg-primary"></div>
-						<span class="font-medium text-base-content">{t('contact.open_to_work', currentLocale)}</span>
+						<span class="font-medium text-base-content"
+							>{t('contact.open_to_work', currentLocale)}</span
+						>
 					</div>
 
 					<div class="flex items-center gap-4 rounded-md bg-base-200 p-4">
@@ -263,7 +302,9 @@
 							</svg>
 						</div>
 						<div>
-							<p class="text-xs font-semibold tracking-wider text-base-content">{t('contact.email_label', currentLocale)}</p>
+							<p class="text-xs font-semibold tracking-wider text-base-content">
+								{t('contact.email_label', currentLocale)}
+							</p>
 							<p class="text-base-content">meuemail@gmail.com</p>
 						</div>
 					</div>
@@ -282,8 +323,10 @@
 							</svg>
 						</div>
 						<div>
-							<p class="text-xs font-semibold tracking-wider text-base-content">{t('contact.location_label', currentLocale)}</p>
-													<p class="text-base-content">{t('contact.location_value', currentLocale)}</p>
+							<p class="text-xs font-semibold tracking-wider text-base-content">
+								{t('contact.location_label', currentLocale)}
+							</p>
+							<p class="text-base-content">{t('contact.location_value', currentLocale)}</p>
 						</div>
 					</div>
 
@@ -358,7 +401,7 @@
 					</div>
 				</div>
 
-				<form class="flex flex-col gap-4">
+				<!-- <form class="flex flex-col gap-4">
 					<div>
 						<label for="name" class="mb-2 block text-sm font-medium text-base-content">{t('form.name', currentLocale)}</label>
 						<input
@@ -386,6 +429,68 @@
 						></textarea>
 					</div>
 					<button type="submit" class="btn btn-primary"> {t('form.submit', currentLocale)} </button>
+				</form> -->
+
+				<form
+					bind:this={formElement}
+					class="flex flex-col gap-4"
+					method="POST"
+					action="?/send"
+					use:enhance={handleSubmit}
+				>
+					<div>
+						<label for="name" class="mb-2 block text-sm font-medium text-base-content">
+							{t('form.name', currentLocale)}
+						</label>
+						<input
+							type="text"
+							id="name"
+							name="name"
+							class="input w-full"
+							placeholder={t('form.placeholder.name', currentLocale)}
+							required
+							disabled={loading}
+						/>
+					</div>
+
+					<div>
+						<label for="email" class="mb-2 block text-sm font-medium text-base-content">
+							{t('form.email', currentLocale)}
+						</label>
+						<input
+							type="email"
+							id="email"
+							name="email"
+							class="input w-full"
+							placeholder={t('form.placeholder.email', currentLocale)}
+							required
+							disabled={loading}
+						/>
+					</div>
+
+					<div>
+						<label for="message" class="mb-2 block text-sm font-medium text-base-content">
+							{t('form.message', currentLocale)}
+						</label>
+						<textarea
+							id="message"
+							name="message"
+							rows="5"
+							class="textarea w-full"
+							placeholder={t('form.placeholder.message', currentLocale)}
+							required
+							disabled={loading}
+						></textarea>
+					</div>
+
+					<button type="submit" class="btn btn-primary" class:loading disabled={loading}>
+						{#if loading}
+							<span class="loading loading-spinner"></span>
+							{t('form.sending', currentLocale)}
+						{:else}
+							{t('form.submit', currentLocale)}
+						{/if}
+					</button>
 				</form>
 			</div>
 		</Animate>
