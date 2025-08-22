@@ -2,3 +2,7 @@
  @plugin "daisyui" {
    themes: halloween --default;
  }
+
+ * {
+ font-family: 'JetBrains Mono Variable',"monospace";
+ }
