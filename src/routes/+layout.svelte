@@ -47,7 +47,7 @@
 	{/if}
 </svelte:head>
 
-<header class="sticky top-0 z-50 border-b border-gray-800 bg-black/80 backdrop-blur">
+<header class="sticky top-0 z-50 border-b border-base-300 bg-base-300/60  backdrop-blur">
 	<div class="mx-auto max-w-6xl px-4">
 		<div class="flex h-16 items-center justify-between">
 			<a href="/" class="text-xl font-bold text-white"> {t('brand.name', currentLocale)} </a>
