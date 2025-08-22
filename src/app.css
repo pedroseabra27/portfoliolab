@@ -3,6 +3,6 @@
    themes: halloween --default;
  }
 
- * {
- font-family: 'JetBrains Mono Variable',"monospace";
+ *, body {
+ font-family: "JetBrains Mono", monospace;
  }
