@@ -110,10 +110,11 @@
 
 				<div class="flex justify-center lg:justify-end">
 					<div
-						class="flex h-80 w-80 items-center justify-center overflow-hidden rounded-full bg-base-100"
+						class="flex h-96 w-96 items-center justify-center overflow-hidden rounded-full bg-base-100"
 					>
-						<div class="flex h-full w-full items-center justify-center text-lg opacity-50">
-							{t('profile.photo', currentLocale)}
+						<div class="flex h-full w-full items-center justify-center text-lg">
+							<!-- {t('profile.photo', currentLocale)} -->
+							<img class="h-full w-full object-cover" src="https://atletico.com.br/wp-content/uploads/2024/07/53872156304_87a4c8f811_k-1.jpg" alt="">
 						</div>
 					</div>
 				</div>
