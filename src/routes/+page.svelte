@@ -9,7 +9,7 @@
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import TextAnimation from '$lib/components/TextAnimation.svelte';
 	import { ArrowBigRight, ArrowRight } from 'lucide-svelte';
-	import Timeline from '$lib/components/Timeline.svelte';
+	// import Timeline from '$lib/components/Timeline.svelte';
 	import GlowCard from '$lib/components/GlowCard.svelte';
 
 	let { form }: { form: ActionData } = $props();
