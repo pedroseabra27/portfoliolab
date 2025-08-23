@@ -138,7 +138,7 @@
 					<h2 class="text-xl font-semibold">{translate('projects.technologies', currentLocale)}</h2>
 					<div class="flex flex-wrap gap-2">
 						{#each project.tecnologias as tech}
-							<span class="badge badge-outline badge-lg">{tech}</span>
+							<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">{tech}</span>
 						{/each}
 					</div>
 				</div>
