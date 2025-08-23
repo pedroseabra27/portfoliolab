@@ -9,6 +9,8 @@
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import TextAnimation from '$lib/components/TextAnimation.svelte';
 	import { ArrowBigRight, ArrowRight } from 'lucide-svelte';
+	import Timeline from '$lib/components/Timeline.svelte';
+	import GlowCard from '$lib/components/GlowCard.svelte';
 
 	let { form }: { form: ActionData } = $props();
 	let scrollY = $state(0);
@@ -55,7 +57,6 @@
 		};
 	};
 </script>
-
 <section class="flex min-h-screen items-center">
 	<div class="mx-auto w-full max-w-6xl px-4">
 		<Animate>
@@ -176,24 +177,44 @@
 	<div class="mx-auto max-w-6xl px-4">
 		<Animate>
 			<div class="space-y-12">
-				<div class="flex justify-between w-full items-center">
+				<div class="flex w-full items-center justify-between">
 					<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">
 						{t('projects.title', currentLocale)}
 					</h2>
-					<a href="/projetos" class="btn btn-primary px-16">{t('projects.see_more',currentLocale)} <ArrowRight/></a>
+					<a href="/projetos" class="btn px-16 btn-primary"
+						>{t('projects.see_more', currentLocale)} <ArrowRight /></a
+					>
 				</div>
 				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-					{#each projetos.slice(0,3) as projeto}
-						<a href="/projetos/{projeto.id}" class="space-y-4 rounded-lg bg-base-200 p-6">
-							<div class="h-48 rounded-lg bg-base-100"></div>
-							<h3 class="text-xl font-semibold text-base-content">
-								{t(projeto.tituloKey, currentLocale)}
-							</h3>
-							<p class="text-base-content">{t(projeto.descKey, currentLocale)}</p>
-							<div class="flex gap-2">
-								{#each projeto.tecnologias as tech}
-									<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">{tech}</span>
-								{/each}
+					{#each projetos.slice(0, 3) as projeto}
+						<a
+							href="/projetos/{projeto.id}"
+							class="group relative rounded-lg border border-base-300 p-1 hover:scale-102 transition-all duration-500"
+						>
+							<GlowCard
+								spread={50}
+								glow={true}
+								disabled={false}
+								proximity={64}
+								inactiveZone={0.01}
+							/>
+							<div class="relative flex h-full flex-col gap-4 rounded-lg bg-base-200 p-6">
+								<div class="h-48 bg-base-100">
+									<img
+										src={projeto.imageUrl}
+										alt={t(projeto.tituloKey, currentLocale)}
+										class="h-full w-full rounded-lg object-cover"
+									/>
+								</div>
+								<h3 class="text-xl font-semibold text-base-content">
+									{t(projeto.tituloKey, currentLocale)}
+								</h3>
+								<p class="text-base-content">{t(projeto.descKey, currentLocale)}</p>
+								<div class="flex gap-2">
+									{#each projeto.tecnologias as tech}
+										<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">{tech}</span>
+									{/each}
+								</div>
 							</div>
 						</a>
 					{/each}

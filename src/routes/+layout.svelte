@@ -141,7 +141,7 @@
 				{#each navItems as item}
 					<a
 						href={item.href}
-						class="z-10 px-6 py-3 text-base-content transition-colors hover:text-primary"
+						class="z-10 px-5 py-3 text-base-content transition-colors hover:text-primary"
 						use:positionMotion>{t(item.key, currentLocale)}</a
 					>
 				{/each}
@@ -160,8 +160,9 @@
 				>
 					<li use:motion class="absolute z-0 h-4 w-full rounded-full bg-base-content md:h-7"></li>
 				</Motion>
-
-				<LocaleSelect />
+				<div class="ml-2">
+					<LocaleSelect />
+				</div>
 			</nav>
 
 			<button
