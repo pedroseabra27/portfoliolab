@@ -46,8 +46,10 @@
 	},
 	"packageManager": "pnpm@10.3.0",
 	"dependencies": {
+		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.540.0",
 		"nodemailer": "^7.0.5",
-		"svelte-motion": "^0.12.2"
+		"svelte-motion": "^0.12.2",
+		"tailwind-merge": "^3.3.1"
 	}
 }
