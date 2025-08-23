@@ -3,6 +3,9 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import Mouse from '$lib/components/Mouse.svelte';
 	import { getLocale, switchLocale, translate as t } from '$lib/i18n';
+	import Particles from '$lib/components/Particles.svelte';
+	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
 
 	let { children } = $props();
 
@@ -34,6 +37,50 @@
 			currentLocale = e.detail;
 		});
 	}
+
+	let scrollY = $state(0);
+	let innerHeight = $state(0);
+
+	function updateIntersections() {
+		if (document.documentElement.scrollHeight > innerHeight) {
+			scrollProgress = scrollY / (document.documentElement.scrollHeight - innerHeight);
+		}
+	}
+
+	let isMobile = $state(false);
+
+	function checkMobile() {
+		isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
+	}
+
+	onMount(() => {
+		checkMobile();
+		window.addEventListener('scroll', () => {
+			scrollY = window.scrollY;
+			updateIntersections();
+		});
+
+		window.addEventListener('resize', () => {
+			innerHeight = window.innerHeight;
+			innerWidth = window.innerWidth;
+			updateIntersections();
+		});
+
+		innerHeight = window.innerHeight;
+		innerWidth = window.innerWidth;
+		updateIntersections();
+
+		return () => {
+			window.removeEventListener('scroll', updateIntersections);
+			window.removeEventListener('resize', updateIntersections);
+		};
+	});
+
+	let scrollProgress = $state(0);
+
+	$effect(() => {
+		updateIntersections();
+	});
 </script>
 
 <svelte:head>
@@ -47,7 +94,17 @@
 	{/if}
 </svelte:head>
 
-<header class="sticky top-0 z-50 border-b border-base-300 bg-base-300/60  backdrop-blur">
+{#if scrollProgress > 0.01}
+	<div transition:fly class="fixed top-0 left-0 z-51 h-1 w-full bg-transparent">
+		<div class="h-full bg-primary" style="width: {scrollProgress * 100}%"></div>
+	</div>
+{/if}
+
+<header
+	class="sticky top-0 z-50 transition-opacity {scrollProgress > 0.02
+		? 'border-b border-base-300 bg-base-300/60 backdrop-blur '
+		: ''}"
+>
 	<div class="mx-auto max-w-6xl px-4">
 		<div class="flex h-16 items-center justify-between">
 			<a href="/" class="text-xl font-bold text-base-content"> {t('brand.name', currentLocale)} </a>
@@ -61,7 +118,9 @@
 				<button
 					onclick={toggleLocale}
 					class="rounded-md border border-base-100 px-3 py-1 text-xs text-base-content hover:bg-base-200"
-					aria-label={currentLocale === 'pt' ? t('aria.switch_to_en', currentLocale) : t('aria.switch_to_pt', currentLocale)}
+					aria-label={currentLocale === 'pt'
+						? t('aria.switch_to_en', currentLocale)
+						: t('aria.switch_to_pt', currentLocale)}
 				>
 					{currentLocale.toUpperCase()}
 				</button>
@@ -115,12 +174,19 @@
 				<a
 					onclick={toggleMobileMenu}
 					href={item.href}
-					class="text-2xl text-base-content transition-colors hover:text-primary">{t(item.key, currentLocale)}</a>
+					class="text-2xl text-base-content transition-colors hover:text-primary"
+					>{t(item.key, currentLocale)}</a
+				>
 			{/each}
 			<button
-				onclick={() => { toggleLocale(); toggleMobileMenu(); }}
+				onclick={() => {
+					toggleLocale();
+					toggleMobileMenu();
+				}}
 				class="mx-auto mt-6 rounded-md border border-base-100 px-4 py-2 text-base-content hover:bg-base-200"
-				aria-label={currentLocale === 'pt' ? t('aria.switch_to_en', currentLocale) : t('aria.switch_to_pt', currentLocale)}
+				aria-label={currentLocale === 'pt'
+					? t('aria.switch_to_en', currentLocale)
+					: t('aria.switch_to_pt', currentLocale)}
 			>
 				{currentLocale.toUpperCase()}
 			</button>
@@ -129,8 +195,12 @@
 {/if}
 
 <main>
-	<Mouse />
+	{#if !isMobile}
+		<Mouse />
+		<Particles className="absolute inset-0" />
+	{/if}
 	{@render children?.()}
+
 	<footer class="border-t border-base-100 bg-base-300 py-12 text-base-content">
 		<div class="mx-auto max-w-6xl px-4">
 			<div class="mb-8 grid grid-cols-1 gap-8 text-center md:grid-cols-3 md:text-left">
@@ -138,19 +208,37 @@
 					<h3 class="text-lg font-bold text-base-content">{t('footer.quote', currentLocale)}</h3>
 					<blockquote class="italic">
 						<p>"{t('footer.quote_text', currentLocale)}"</p>
-						<cite class="mt-2 block text-sm not-italic">{t('footer.quote_author', currentLocale)}</cite>
+						<cite class="mt-2 block text-sm not-italic"
+							>{t('footer.quote_author', currentLocale)}</cite
+						>
 					</blockquote>
 				</div>
 
 				<div class="space-y-4">
-					<h3 class="text-lg font-bold text-base-content">{t('footer.navigation', currentLocale)}</h3>
+					<h3 class="text-lg font-bold text-base-content">
+						{t('footer.navigation', currentLocale)}
+					</h3>
 					<ul class="space-y-2">
-						<li><a href="#sobre" class="transition-colors hover:text-primary">{t('footer.about', currentLocale)}</a></li>
-						<li><a href="#projetos" class="transition-colors hover:text-primary">{t('footer.projects', currentLocale)}</a></li>
 						<li>
-							<a href="#experiencias" class="transition-colors hover:text-primary">{t('footer.experiences', currentLocale)}</a>
+							<a href="#sobre" class="transition-colors hover:text-primary"
+								>{t('footer.about', currentLocale)}</a
+							>
 						</li>
-						<li><a href="#contato" class="transition-colors hover:text-primary">{t('footer.contact', currentLocale)}</a></li>
+						<li>
+							<a href="#projetos" class="transition-colors hover:text-primary"
+								>{t('footer.projects', currentLocale)}</a
+							>
+						</li>
+						<li>
+							<a href="#experiencias" class="transition-colors hover:text-primary"
+								>{t('footer.experiences', currentLocale)}</a
+							>
+						</li>
+						<li>
+							<a href="#contato" class="transition-colors hover:text-primary"
+								>{t('footer.contact', currentLocale)}</a
+							>
+						</li>
 					</ul>
 				</div>
 
@@ -229,10 +317,12 @@
 			</div>
 
 			<div
-				class="text-center justify-between space-y-4 border-t border-base-100 pt-8 text-sm md:flex-row md:space-y-0"
+				class="justify-between space-y-4 border-t border-base-100 pt-8 text-center text-sm md:flex-row md:space-y-0"
 			>
-				<p>&copy; {new Date().getFullYear()} {t('brand.name', currentLocale)}. {t('footer.rights', currentLocale)}</p>
-
+				<p>
+					&copy; {new Date().getFullYear()}
+					{t('brand.name', currentLocale)}. {t('footer.rights', currentLocale)}
+				</p>
 			</div>
 		</div>
 	</footer>

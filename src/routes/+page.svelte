@@ -20,39 +20,6 @@
 		});
 	}
 
-	function updateIntersections() {
-		if (document.documentElement.scrollHeight > innerHeight) {
-			scrollProgress = scrollY / (document.documentElement.scrollHeight - innerHeight);
-		}
-	}
-
-	onMount(() => {
-		window.addEventListener('scroll', () => {
-			scrollY = window.scrollY;
-			updateIntersections();
-		});
-
-		window.addEventListener('resize', () => {
-			innerHeight = window.innerHeight;
-			innerWidth = window.innerWidth;
-			updateIntersections();
-		});
-
-		innerHeight = window.innerHeight;
-		innerWidth = window.innerWidth;
-		updateIntersections();
-
-		return () => {
-			window.removeEventListener('scroll', updateIntersections);
-			window.removeEventListener('resize', updateIntersections);
-		};
-	});
-
-	let scrollProgress = $state(0);
-
-	$effect(() => {
-		updateIntersections();
-	});
 
 	const habilidades = ['JavaScript', 'React', 'Node.js', 'TypeScript', 'Svelte', 'Tailwind'];
 
@@ -78,24 +45,18 @@
 		loading = true;
 
 		return async ({ result, update }) => {
-			
 			if (result.type === 'success') {
 				formElement?.reset();
 			}
-			
+
 			await update();
 			loading = false;
 		};
 	};
 </script>
 
-{#if scrollProgress > 0.01}
-	<div transition:fly class="fixed top-0 left-0 z-50 h-1 w-full bg-transparent">
-		<div class="h-full bg-primary" style="width: {scrollProgress * 100}%"></div>
-	</div>
-{/if}
 
-<section class="flex min-h-screen items-center bg-base-300">
+<section class="flex min-h-screen items-center ">
 	<div class="mx-auto w-full max-w-6xl px-4">
 		<Animate>
 			<div class="grid items-center gap-12 lg:grid-cols-2">
@@ -110,11 +71,15 @@
 
 				<div class="flex justify-center lg:justify-end">
 					<div
-						class="flex h-96 w-96 items-center justify-center overflow-hidden rounded-full bg-base-100"
+						class="flex lg:h-96 lg:w-96 w-64 h-64 items-center justify-center overflow-hidden rounded-full bg-base-100"
 					>
 						<div class="flex h-full w-full items-center justify-center text-lg">
 							<!-- {t('profile.photo', currentLocale)} -->
-							<img class="h-full w-full object-cover" src="https://atletico.com.br/wp-content/uploads/2024/07/53872156304_87a4c8f811_k-1.jpg" alt="">
+							<img
+								class="h-full w-full object-cover"
+								src="https://atletico.com.br/wp-content/uploads/2024/07/53872156304_87a4c8f811_k-1.jpg"
+								alt=""
+							/>
 						</div>
 					</div>
 				</div>
@@ -123,7 +88,7 @@
 	</div>
 </section>
 
-<section id="sobre" class="flex items-center bg-base-300 py-16">
+<section id="sobre" class="flex items-center  py-16 ">
 	<div class="mx-auto w-full max-w-6xl px-4">
 		<Animate>
 			<div class="relative z-10 mx-auto max-w-7xl">
@@ -136,7 +101,7 @@
 				<div class="grid gap-12 lg:grid-cols-2">
 					<div class="h-full space-y-6">
 						<div
-							class="h-full rounded-2xl bg-base-100 p-8 shadow-xl transition-all duration-300 hover:shadow-2xl"
+							class="h-full rounded-lg bg-base-200 p-8 shadow-xl transition-all duration-300 hover:shadow-2xl"
 						>
 							<div class="mb-6 flex items-center">
 								<div
@@ -168,7 +133,7 @@
 
 					<div class="h-full space-y-6">
 						<div
-							class="h-full rounded-2xl bg-base-100 p-8 shadow-xl transition-all duration-300 hover:shadow-2xl"
+							class="h-full rounded-lg p-8 shadow-xl transition-all duration-300 hover:shadow-2xl bg-base-200"
 						>
 							<div class="mb-6 flex items-center">
 								<div
@@ -194,16 +159,9 @@
 							</div>
 							<div class="flex flex-wrap gap-3">
 								{#each habilidades as habilidade, index}
-									<!-- <span
-										class="group animate-fade-in relative cursor-pointer rounded-full border bg-gradient-to-r from-orange-50 to-yellow-50 px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-300 hover:border-primary hover:shadow-md"
-										style="animation-delay: {0.1 * index}s"
+									<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary"
+										>{habilidade}</span
 									>
-										{habilidade}
-										<div
-											class="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary opacity-0 transition-opacity duration-300 group-hover:opacity-10"
-										></div> -->
-										<span class="rounded bg-primary/20 px-3 py-1 text-sm text-primary">{habilidade}</span>
-									<!-- </span> -->
 								{/each}
 							</div>
 						</div>
@@ -213,7 +171,7 @@
 		</Animate>
 	</div>
 </section>
-<section id="projetos" class="bg-base-300 py-20">
+<section id="projetos" class=" py-20">
 	<div class="mx-auto max-w-6xl px-4">
 		<Animate>
 			<div class="space-y-12">
@@ -241,7 +199,7 @@
 	</div>
 </section>
 
-<section id="experiencias" class="bg-base-300 py-20">
+<section id="experiencias" class=" py-20">
 	<div class="mx-auto max-w-6xl px-4">
 		<Animate>
 			<div class="space-y-12">
@@ -271,7 +229,7 @@
 	</div>
 </section>
 
-<section id="contato" class="bg-base-300 py-20 text-base-content">
+<section id="contato" class=" py-20 text-base-content">
 	<div class="mx-auto max-w-6xl px-4">
 		<div class="mb-12 text-center">
 			<h2 class="text-4xl font-bold">{t('contact.title', currentLocale)}</h2>

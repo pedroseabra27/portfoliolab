@@ -265,13 +265,23 @@
 	//   Building Stage
 </script>
 
-<div class={className} bind:this={canvasContainerRef} aria-hidden="true">
-	<canvas bind:this={canvasRef} class="size-full"></canvas>
+<div class="background-particles" bind:this={canvasContainerRef} aria-hidden="true">
+	<canvas bind:this={canvasRef}></canvas>
 </div>
 
 <style>
-	.size-full {
+	.background-particles {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		pointer-events: none; /* lets you click through it */
+        z-index: -1;
+	}
+	.background-particles canvas {
 		width: 100%;
 		height: 100%;
+		display: block;
 	}
 </style>

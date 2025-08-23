@@ -1,8 +1,9 @@
 @import 'tailwindcss';
- @plugin "daisyui" {
-   themes: halloween --default;
- }
+@plugin "daisyui" {
+	themes: halloween --default;
+}
 
- *, body {
- font-family: "JetBrains Mono", monospace;
- }
+*,
+body {
+	font-family: 'JetBrains Mono', monospace;
+}
