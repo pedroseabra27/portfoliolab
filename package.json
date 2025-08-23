@@ -47,6 +47,7 @@
 	"packageManager": "pnpm@10.3.0",
 	"dependencies": {
 		"clsx": "^2.1.1",
+		"flag-icons": "^7.5.0",
 		"lucide-svelte": "^0.540.0",
 		"nodemailer": "^7.0.5",
 		"svelte-motion": "^0.12.2",

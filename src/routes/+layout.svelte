@@ -6,6 +6,8 @@
 	import Particles from '$lib/components/Particles.svelte';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
+	import { Motion } from 'svelte-motion';
+	import LocaleSelect from '$lib/components/LocaleSelect.svelte';
 
 	let { children } = $props();
 
@@ -81,6 +83,25 @@
 	$effect(() => {
 		updateIntersections();
 	});
+
+	let left = $state(0);
+	let width = $state(0);
+	let opacity = $state(0);
+
+	let positionMotion = (node: HTMLElement) => {
+		let refNode = () => {
+			let mint = node.getBoundingClientRect();
+			left = node.offsetLeft;
+			width = mint.width;
+			opacity = 1;
+		};
+		node.addEventListener('mouseenter', refNode);
+		return {
+			destroy() {
+				node.removeEventListener('mouseenter', refNode);
+			}
+		};
+	};
 </script>
 
 <svelte:head>
@@ -109,21 +130,38 @@
 		<div class="flex h-16 items-center justify-between">
 			<a href="/" class="text-xl font-bold text-base-content"> {t('brand.name', currentLocale)} </a>
 
-			<nav class="hidden items-center gap-8 text-sm md:flex">
+			<nav
+				class="hidden items-center text-sm md:flex"
+				onmouseleave={() => {
+					width = width;
+					left = left;
+					opacity = 0;
+				}}
+			>
 				{#each navItems as item}
-					<a href={item.href} class="text-base-content transition-colors hover:text-primary"
-						>{t(item.key, currentLocale)}</a
+					<a
+						href={item.href}
+						class="z-10 px-6 py-3 text-base-content transition-colors hover:text-primary"
+						use:positionMotion>{t(item.key, currentLocale)}</a
 					>
 				{/each}
-				<button
-					onclick={toggleLocale}
-					class="rounded-md border border-base-100 px-3 py-1 text-xs text-base-content hover:bg-base-200"
-					aria-label={currentLocale === 'pt'
-						? t('aria.switch_to_en', currentLocale)
-						: t('aria.switch_to_pt', currentLocale)}
+				<Motion
+					animate={{
+						left: left,
+						width: width,
+						opacity: opacity
+					}}
+					transition={{
+						type: 'spring',
+						stiffness: 400,
+						damping: 30
+					}}
+					let:motion
 				>
-					{currentLocale.toUpperCase()}
-				</button>
+					<li use:motion class="absolute z-0 h-4 w-full rounded-full bg-base-content md:h-7"></li>
+				</Motion>
+
+				<LocaleSelect />
 			</nav>
 
 			<button
@@ -178,18 +216,7 @@
 					>{t(item.key, currentLocale)}</a
 				>
 			{/each}
-			<button
-				onclick={() => {
-					toggleLocale();
-					toggleMobileMenu();
-				}}
-				class="mx-auto mt-6 rounded-md border border-base-100 px-4 py-2 text-base-content hover:bg-base-200"
-				aria-label={currentLocale === 'pt'
-					? t('aria.switch_to_en', currentLocale)
-					: t('aria.switch_to_pt', currentLocale)}
-			>
-				{currentLocale.toUpperCase()}
-			</button>
+			<LocaleSelect />
 		</nav>
 	</div>
 {/if}

@@ -5,7 +5,7 @@ const browser = typeof window !== 'undefined';
 export function getInitialLocale(): Locale {
 	if (!browser) return 'pt';
 	const saved = (localStorage.getItem('locale') as Locale | null) ?? null;
-	if (saved === 'pt' || saved === 'en') return saved;
+	if (saved) return saved;
 	const nav = navigator.language?.toLowerCase() ?? 'pt';
 	return nav.startsWith('pt') ? 'pt' : 'en';
 }
@@ -98,6 +98,8 @@ export const dictionaries: Dictionaries = {
 		'projects.status.in-progress': 'Em Progresso',
 		'projects.status.planned': 'Planejado',
 
+		'projects.see_more': 'Ver mais',
+
 		// Detailed descriptions and features
 		'projects.1.detailed_desc':
 			'Uma aplicação web moderna construída com React e Node.js, focada em performance e experiência do usuário. O projeto implementa as melhores práticas de desenvolvimento e arquitetura escalável.',
@@ -118,18 +120,17 @@ export const dictionaries: Dictionaries = {
 		'projects.3.feature3': 'Integração com Firebase',
 
 		'contact.title': 'Contato',
-    'contact.open_to_work': 'Aberto para trabalho e colaborações',
-    'contact.email_label': 'EMAIL',
-    'contact.location_label': 'LOCALIZAÇÃO',
-    'contact.location_value': 'Minha localização',
-	 'form.name': 'Nome',
-    'form.email': 'Email',
-    'form.message': 'Mensagem',
-    'form.placeholder.name': 'Insira seu nome',
-    'form.placeholder.email': 'Insira seu email',
-    'form.placeholder.message': 'Digite sua mensagem',
-    'form.submit': 'Enviar',
-
+		'contact.open_to_work': 'Aberto para trabalho e colaborações',
+		'contact.email_label': 'EMAIL',
+		'contact.location_label': 'LOCALIZAÇÃO',
+		'contact.location_value': 'Minha localização',
+		'form.name': 'Nome',
+		'form.email': 'Email',
+		'form.message': 'Mensagem',
+		'form.placeholder.name': 'Insira seu nome',
+		'form.placeholder.email': 'Insira seu email',
+		'form.placeholder.message': 'Digite sua mensagem',
+		'form.submit': 'Enviar'
 	},
 	en: {
 		// Brand / Hero
@@ -201,6 +202,8 @@ export const dictionaries: Dictionaries = {
 		'projects.status.in-progress': 'In Progress',
 		'projects.status.planned': 'Planned',
 
+		'projects.see_more': 'See more',
+
 		// Detailed descriptions and features
 		'projects.1.detailed_desc':
 			'A modern web application built with React and Node.js, focused on performance and user experience. The project implements development best practices and scalable architecture.',
@@ -220,20 +223,20 @@ export const dictionaries: Dictionaries = {
 		'projects.3.feature2': 'Offline functionality',
 		'projects.3.feature3': 'Firebase integration',
 		// Contact
-    'contact.title': 'Contact',
-    'contact.open_to_work': 'Open to work & Collabs',
-    'contact.email_label': 'EMAIL',
-    'contact.location_label': 'LOCATION',
-    'contact.location_value': 'My location',
+		'contact.title': 'Contact',
+		'contact.open_to_work': 'Open to work & Collabs',
+		'contact.email_label': 'EMAIL',
+		'contact.location_label': 'LOCATION',
+		'contact.location_value': 'My location',
 
-    // Form
-    'form.name': 'Name',
-    'form.email': 'Email',
-    'form.message': 'Message',
-    'form.placeholder.name': 'Please enter your name',
-    'form.placeholder.email': 'Please enter your email',
-    'form.placeholder.message': 'Enter your message',
-    'form.submit': 'Submit',
+		// Form
+		'form.name': 'Name',
+		'form.email': 'Email',
+		'form.message': 'Message',
+		'form.placeholder.name': 'Please enter your name',
+		'form.placeholder.email': 'Please enter your email',
+		'form.placeholder.message': 'Enter your message',
+		'form.submit': 'Submit'
 	}
 };
 

@@ -7,6 +7,8 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import type { SubmitFunction } from '@sveltejs/kit';
+	import TextAnimation from '$lib/components/TextAnimation.svelte';
+	import { ArrowBigRight, ArrowRight } from 'lucide-svelte';
 
 	let { form }: { form: ActionData } = $props();
 	let scrollY = $state(0);
@@ -19,7 +21,6 @@
 			currentLocale = e.detail;
 		});
 	}
-
 
 	const habilidades = ['JavaScript', 'React', 'Node.js', 'TypeScript', 'Svelte', 'Tailwind'];
 
@@ -55,15 +56,15 @@
 	};
 </script>
 
-
-<section class="flex min-h-screen items-center ">
+<section class="flex min-h-screen items-center">
 	<div class="mx-auto w-full max-w-6xl px-4">
 		<Animate>
 			<div class="grid items-center gap-12 lg:grid-cols-2">
 				<div class="space-y-8 text-center lg:text-left">
-					<h1 class="text-5xl leading-tight font-bold text-base-content lg:text-7xl">
-						{t('brand.name', currentLocale)}
-					</h1>
+					<TextAnimation
+						class="text-left text-5xl leading-tight font-bold text-base-content lg:text-7xl"
+						words={t('brand.name', currentLocale)}
+					/>
 					<p class="mx-auto max-w-2xl text-xl leading-relaxed text-base-content lg:mx-0">
 						{t('hero.intro', currentLocale)}
 					</p>
@@ -71,7 +72,7 @@
 
 				<div class="flex justify-center lg:justify-end">
 					<div
-						class="flex lg:h-96 lg:w-96 w-64 h-64 items-center justify-center overflow-hidden rounded-full bg-base-100"
+						class="flex h-64 w-64 items-center justify-center overflow-hidden rounded-full bg-base-100 lg:h-96 lg:w-96"
 					>
 						<div class="flex h-full w-full items-center justify-center text-lg">
 							<!-- {t('profile.photo', currentLocale)} -->
@@ -88,7 +89,7 @@
 	</div>
 </section>
 
-<section id="sobre" class="flex items-center  py-16 ">
+<section id="sobre" class="flex items-center py-16">
 	<div class="mx-auto w-full max-w-6xl px-4">
 		<Animate>
 			<div class="relative z-10 mx-auto max-w-7xl">
@@ -133,7 +134,7 @@
 
 					<div class="h-full space-y-6">
 						<div
-							class="h-full rounded-lg p-8 shadow-xl transition-all duration-300 hover:shadow-2xl bg-base-200"
+							class="h-full rounded-lg bg-base-200 p-8 shadow-xl transition-all duration-300 hover:shadow-2xl"
 						>
 							<div class="mb-6 flex items-center">
 								<div
@@ -175,12 +176,15 @@
 	<div class="mx-auto max-w-6xl px-4">
 		<Animate>
 			<div class="space-y-12">
-				<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">
-					{t('projects.title', currentLocale)}
-				</h2>
+				<div class="flex justify-between w-full items-center">
+					<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">
+						{t('projects.title', currentLocale)}
+					</h2>
+					<a href="/projetos" class="btn btn-primary px-16">{t('projects.see_more',currentLocale)} <ArrowRight/></a>
+				</div>
 				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-					{#each projetos as projeto}
-						<a href="/projeto/{projeto.id}" class="space-y-4 rounded-lg bg-base-200 p-6">
+					{#each projetos.slice(0,3) as projeto}
+						<a href="/projetos/{projeto.id}" class="space-y-4 rounded-lg bg-base-200 p-6">
 							<div class="h-48 rounded-lg bg-base-100"></div>
 							<h3 class="text-xl font-semibold text-base-content">
 								{t(projeto.tituloKey, currentLocale)}
