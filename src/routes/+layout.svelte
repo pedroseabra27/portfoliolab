@@ -26,10 +26,10 @@
 
 	const navItems = [
 		{ key: 'nav.home', href: '/' },
-		{ key: 'nav.about', href: '#sobre' },
-		{ key: 'nav.projects', href: '#projetos' },
-		{ key: 'nav.experiences', href: '#experiencias' },
-		{ key: 'nav.contact', href: '#contato' }
+		{ key: 'nav.about', href: '/#sobre' },
+		{ key: 'nav.projects', href: '/#projetos' },
+		{ key: 'nav.experiences', href: '/#experiencias' },
+		{ key: 'nav.contact', href: '/#contato' }
 	];
 
 	if (typeof window !== 'undefined') {

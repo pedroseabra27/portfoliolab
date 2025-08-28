@@ -12,9 +12,6 @@
 	// import Timeline from '$lib/components/Timeline.svelte';
 	import GlowCard from '$lib/components/GlowCard.svelte';
 
-	let { form }: { form: ActionData } = $props();
-	let scrollY = $state(0);
-	let innerHeight = $state(0);
 	let currentLocale = $state(getLocale());
 
 	if (typeof window !== 'undefined') {
@@ -181,7 +178,7 @@
 					<h2 class="text-center text-3xl font-bold text-base-content lg:text-left">
 						{t('projects.title', currentLocale)}
 					</h2>
-					<a href="/projetos" class="btn px-16 btn-primary"
+					<a href="/projetos" class="btn md:px-16 btn-primary"
 						>{t('projects.see_more', currentLocale)} <ArrowRight /></a
 					>
 				</div>
