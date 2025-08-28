@@ -130,7 +130,26 @@ export const dictionaries: Dictionaries = {
 		'form.placeholder.name': 'Insira seu nome',
 		'form.placeholder.email': 'Insira seu email',
 		'form.placeholder.message': 'Digite sua mensagem',
-		'form.submit': 'Enviar'
+		'form.submit': 'Enviar',
+
+		'projects.page.title': 'Projetos - Portfólio',
+		'projects.page.description': 'Explore meu portfólio de projetos de desenvolvimento web',
+
+		// Main heading and description
+		'projects.heading.my': 'Meus',
+		'projects.heading.projects': 'Projetos',
+		'projects.description2':
+			'Explore meu portfólio de projetos de desenvolvimento web, apresentando tecnologias modernas e soluções inovadoras.',
+
+		// Filter buttons
+		'projects.filter.all': 'Todos',
+
+		// Empty state
+		'projects.empty.title': 'Nenhum projeto encontrado',
+		'projects.empty.description': 'Tente ajustar seus filtros ou volte mais tarde.',
+
+		// Accessibility
+		'projects.image.alt': 'Imagem do projeto'
 	},
 	en: {
 		// Brand / Hero
@@ -236,7 +255,25 @@ export const dictionaries: Dictionaries = {
 		'form.placeholder.name': 'Please enter your name',
 		'form.placeholder.email': 'Please enter your email',
 		'form.placeholder.message': 'Enter your message',
-		'form.submit': 'Submit'
+		'form.submit': 'Submit',
+		'projects.page.title': 'Projects - Portfolio',
+		'projects.page.description': 'Explore my portfolio of web development projects',
+
+		// Main heading and description
+		'projects.heading.my': 'My',
+		'projects.heading.projects': 'Projects',
+		'projects.description2':
+			'Explore my portfolio of web development projects, showcasing modern technologies and innovative solutions.',
+
+		// Filter buttons
+		'projects.filter.all': 'All',
+
+		// Empty state
+		'projects.empty.title': 'No projects found',
+		'projects.empty.description': 'Try adjusting your filters or check back later.',
+
+		// Accessibility
+		'projects.image.alt': 'Project image'
 	}
 };
 
