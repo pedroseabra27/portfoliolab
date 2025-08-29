@@ -10,4 +10,10 @@ declare global {
 	}
 }
 
+declare module '$env/dynamic/private' {
+	export const GMAIL_USER: string;
+	export const GMAIL_PASSWORD: string;
+	export const CONTACT_EMAIL: string;
+}
+
 export {};

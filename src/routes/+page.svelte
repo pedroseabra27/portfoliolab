@@ -261,7 +261,7 @@
 			<div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-8">
 				<div class="flex flex-col gap-4 lg:mt-7">
 					<div class="flex items-center gap-4 rounded-md bg-base-200 p-4">
-						<div class="h-3 w-3 animate-pulse rounded-sm bg-primary"></div>
+						<div class="h-3 w-3 animate-pulse rounded-sm bg-success"></div>
 						<span class="font-medium text-base-content"
 							>{t('contact.open_to_work', currentLocale)}</span
 						>

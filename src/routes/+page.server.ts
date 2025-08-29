@@ -5,11 +5,11 @@ import { env } from '$env/dynamic/private';
 // import { Resend } from 'resend';
 
 const transporter = nodemailer.createTransport({
-	 service: "gmail",
-        auth: {
-            user: "brenoca35@gmail.com",
-            pass: env.GMAIL_PASSWORD,
-        },
+	service: "gmail",
+	auth: {
+		user: env.GMAIL_USER,
+		pass: env.GMAIL_PASSWORD,
+	},
 });
 
 // const resend = new Resend(env.RESEND_API_KEY);
@@ -53,9 +53,10 @@ export const actions = {
 			// await transporter.verify();
 
 			const mailOptions = {
-				from: '"BrenoTeste" <brenoca35@gmail.com>',
-				to: 'oliveira.brenobrandao@gmail.com',
+				from: `"${name}" <${env.GMAIL_USER}>`,
+				to: env.CONTACT_EMAIL,
 				subject: `New Contact Form Message from ${name}`,
+				replyTo: email,
 				html: `
 					<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
 						<h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
