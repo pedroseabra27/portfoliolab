@@ -59,6 +59,11 @@ Fizemos apenas uma página com todas seções
 ### Seção Experiências
 ![Wireframe do Portfólio](docs/images/Experiências.png)
 
+## GIF
+![GIF](docs/images/portfolio-gif.gif)
+
+
+
 
 
 
