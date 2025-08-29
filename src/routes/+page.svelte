@@ -53,10 +53,7 @@
 		<Animate>
 			<div class="grid items-center gap-12 lg:grid-cols-2">
 				<div class="space-y-8 text-center lg:text-left">
-					<TextAnimation
-						class="text-left text-5xl leading-tight font-bold text-base-content lg:text-7xl"
-						words={t('brand.name', currentLocale)}
-					/>
+					<h1 class="md:text-left text-center text-5xl leading-tight font-bold text-base-content lg:text-7xl">{t('brand.name', currentLocale)}</h1>
 					<p class="mx-auto max-w-2xl text-xl leading-relaxed text-base-content lg:mx-0">
 						{t('hero.intro', currentLocale)}
 					</p>
@@ -94,7 +91,7 @@
 				<div class="grid gap-12 lg:grid-cols-2">
 					<div class="h-full space-y-6">
 						<div
-							class="h-full rounded-lg bg-base-200 p-8 shadow-xl transition-all duration-300 hover:shadow-2xl"
+							class="h-full rounded-lg bg-base-200  p-8 shadow-xl transition-all duration-300 hover:shadow-2xl"
 						>
 							<div class="mb-6 flex items-center">
 								<div
@@ -103,7 +100,7 @@
 									<svg
 										class="h-6 w-6 text-base-content"
 										fill="none"
-										stroke="currentColor"
+										stroke="black"
 										viewBox="0 0 24 24"
 									>
 										<path
@@ -135,7 +132,7 @@
 									<svg
 										class="h-6 w-6 text-base-content"
 										fill="none"
-										stroke="currentColor"
+										stroke="black"
 										viewBox="0 0 24 24"
 									>
 										<path
