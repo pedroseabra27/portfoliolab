@@ -21,7 +21,7 @@
 		});
 	}
 
-	const habilidades = ['JavaScript', 'React', 'Node.js', 'TypeScript', 'Svelte', 'Tailwind'];
+	const habilidades = ['C', 'C++', 'Python', 'JavaScript', 'React', 'Node.js', 'TypeScript', 'Svelte', 'Tailwind'];
 
 	const experiencias = [
 		{
@@ -29,12 +29,6 @@
 			empresaKey: 'experiences.1.company',
 			periodoKey: 'experiences.1.period',
 			descKey: 'experiences.1.desc'
-		},
-		{
-			cargoKey: 'experiences.2.role',
-			empresaKey: 'experiences.2.company',
-			periodoKey: 'experiences.2.period',
-			descKey: 'experiences.2.desc'
 		}
 	];
 
@@ -76,8 +70,8 @@
 							<!-- {t('profile.photo', currentLocale)} -->
 							<img
 								class="h-full w-full object-cover"
-								src="https://atletico.com.br/wp-content/uploads/2024/07/53872156304_87a4c8f811_k-1.jpg"
-								alt=""
+								src="/profile.jpg"
+								alt="Pedro Seabra - Estudante de Engenharia de Software"
 							/>
 						</div>
 					</div>
@@ -287,7 +281,7 @@
 							<p class="text-xs font-semibold tracking-wider text-base-content">
 								{t('contact.email_label', currentLocale)}
 							</p>
-							<p class="text-base-content">meuemail@gmail.com</p>
+							<p class="text-base-content">pedroseabra09@gmail.com</p>
 						</div>
 					</div>
 
@@ -314,7 +308,7 @@
 
 					<div class="mt-2 flex items-center gap-4">
 						<a
-							href="https://github.com"
+							href="https://github.com/pedroseabra27"
 							aria-label="GitHub"
 							class="rounded-md bg-base-200 p-3 text-base-content transition-colors hover:bg-base-100"
 						>
@@ -348,7 +342,7 @@
 							</svg>
 						</a>
 						<a
-							href="https://instagram.com"
+							href="https://www.instagram.com/pdrxxsz"
 							aria-label="Instagram"
 							class="rounded-md bg-base-200 p-3 text-base-content transition-colors hover:bg-base-100"
 						>
@@ -365,7 +359,7 @@
 							</svg>
 						</a>
 						<a
-							href="https://x.com"
+							href="https://x.com/pdrseabra"
 							aria-label="X (Twitter)"
 							class="rounded-md bg-base-200 p-3 text-base-content transition-colors hover:bg-base-100"
 						>
