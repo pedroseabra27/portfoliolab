@@ -98,6 +98,13 @@ export const dictionaries: Dictionaries = {
 		'projects.4.feature2': 'Gestão de dados de polissonografia',
 		'projects.4.feature3': 'Integração com sistemas da clínica',
 
+		'projects.5.title': 'Serralheria Amazonas',
+		'projects.5.desc': 'Site de gestão para serralherias',
+		'projects.5.detailed_desc': 'Sistema de gestão completo para serralherias, incluindo controle de estoque, clientes e pedidos.',
+		'projects.5.feature1': 'Gestão de estoque',
+		'projects.5.feature2': 'Cadastro de clientes',
+		'projects.5.feature3': 'Controle de pedidos',
+
 		'contact.title': 'Contato',
 		'contact.open_to_work': 'Aberto para trabalho e colaborações',
 		'contact.email_label': 'EMAIL',
@@ -199,6 +206,14 @@ export const dictionaries: Dictionaries = {
 		'projects.4.feature1': 'Simplified interface for technicians',
 		'projects.4.feature2': 'Polysomnography data management',
 		'projects.4.feature3': 'Integration with clinic systems',
+
+		'projects.5.title': 'Serralheria Amazonas',
+		'projects.5.desc': 'Management site for locksmith shops',
+		'projects.5.detailed_desc': 'Complete management system for locksmith shops, including inventory control, clients, and orders.',
+		'projects.5.feature1': 'Inventory management',
+		'projects.5.feature2': 'Client registration',
+		'projects.5.feature3': 'Order control',
+
 		// Contact
 		'contact.title': 'Contact',
 		'contact.open_to_work': 'Open to work & Collabs',

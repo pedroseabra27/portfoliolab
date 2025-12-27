@@ -18,7 +18,7 @@
 	let canvasSize = { w: 0, h: 0 };
 	const dpr = typeof window !== 'undefined' ? window.devicePixelRatio : 1;
 
-	function oklchToHex(L, C, h) {
+	function oklchToHex(L: number, C: number, h: number) {
 		const hr = (h * Math.PI) / 180;
 		const a = C * Math.cos(hr);
 		const b = C * Math.sin(hr);
@@ -35,7 +35,7 @@
 		let G = -1.2684380046 * L_ + 2.6097574011 * M_ - 0.3413193965 * S_;
 		let B = -0.0041960863 * L_ - 0.7034186147 * M_ + 1.707614701 * S_;
 
-		function linToSrgb(u) {
+		function linToSrgb(u: number) {
 			if (u <= 0.0031308) return 12.92 * u;
 			return 1.055 * Math.pow(u, 1 / 2.4) - 0.055;
 		}
@@ -48,7 +48,7 @@
 		G = Math.min(1, Math.max(0, G));
 		B = Math.min(1, Math.max(0, B));
 
-		const toHex = (v) => {
+		const toHex = (v: number) => {
 			const n = Math.round(v * 255);
 			return n.toString(16).padStart(2, '0');
 		};
@@ -158,7 +158,7 @@
 		}
 	}
 
-	function drawCircle(circle, update = false) {
+	function drawCircle(circle: any, update = false) {
 		if (context) {
 			const { x, y, translateX, translateY, size, alpha } = circle;
 			context.translate(translateX, translateY);
@@ -182,7 +182,7 @@
 		}
 	}
 
-	function remapValue(value, start1, end1, start2, end2) {
+	function remapValue(value: number, start1: number, end1: number, start2: number, end2: number) {
 		let remapped = ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
 		return remapped > 0 ? remapped : 0;
 	}
