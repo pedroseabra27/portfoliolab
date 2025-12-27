@@ -1,7 +1,7 @@
 # Portfólio
 
 ## Link do site 
-- https://portfoliolab-u55v.onrender.com/
+- https://portfoliopedroo.vercel.app/
 
 ## Descrição
 Este projeto consiste no desenvolvimento de um portólio profissional onde será mostrado minha trajetória, habilidades, projetos e formas de contato de maneira moderna
